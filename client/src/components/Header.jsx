@@ -1,20 +1,35 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { pathname } = useLocation();
   const menu = useRef(null);
+  const elRef = useRef(null);
+  const [el, setEl] = useState(null);
+
+  useEffect(() => {
+    setEl(elRef.current);
+  }, []);
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [pathname]);
 
   const closeMenu = (e) => {
     if (menu.current && openMenu && !menu.current.contains(e.target)) {
-      setOpenMenu(false);
+      if (el.contains(e.target)) {
+        setOpenMenu(true);
+      } else {
+        setOpenMenu(false);
+      }
     }
   };
   document.addEventListener('mousedown', closeMenu);
 
   return (
     <div>
-      <header className="p-4 flex items-center justify-between">
+      <header className="flex items-center justify-between">
         <Link to={'/'} className="flex items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +71,7 @@ const Header = () => {
           </button>
         </div>
         <div
+          ref={elRef}
           onClick={() => setOpenMenu(!openMenu)}
           className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 cursor-pointer hover:shadow-md shadow-gray-150"
         >

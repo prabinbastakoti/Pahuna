@@ -24,7 +24,7 @@ const Header = () => {
   const handleLogout = async () => {
     await authService.logout();
     dispatch({ type: 'LOGOUT' });
-    navigate('/', { replace: false });
+    navigate('/', { replace: true });
     setOpenMenu(false);
   };
 

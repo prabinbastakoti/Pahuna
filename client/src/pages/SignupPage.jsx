@@ -9,7 +9,11 @@ const SignupPage = () => {
 
   async function RegisterUser(e) {
     e.preventDefault();
-    await authService.register({ name, email, password });
+    try {
+      await authService.register({ name, email, password });
+    } catch (err) {
+      console.log(err.response.data.error);
+    }
   }
 
   return (

@@ -5,4 +5,9 @@ const register = async (newUser) => {
   return response.data;
 };
 
-export default { register };
+const login = async (credentials) => {
+  const response = await axios.post('/api/auth/login', credentials);
+  return response.data;
+};
+
+export default { register, login };

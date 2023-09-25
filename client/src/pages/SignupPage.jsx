@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import authService from '../services/authService';
+import { AuthContext } from '../context/AuthContext';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -9,6 +10,7 @@ const SignupPage = () => {
 
   const [error, setError] = useState('');
 
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   async function RegisterUser(e) {
@@ -19,6 +21,10 @@ const SignupPage = () => {
     } catch (err) {
       setError(err.response.data.error);
     }
+  }
+
+  if (user) {
+    return <Navigate to={'/'} />;
   }
 
   return (

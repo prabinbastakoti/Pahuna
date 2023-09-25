@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../assets/logo.svg';
+import { AuthContext } from '../context/AuthContext';
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -8,6 +9,7 @@ const Header = () => {
   const menu = useRef(null);
   const elRef = useRef(null);
   const [el, setEl] = useState(null);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     setEl(elRef.current);
@@ -91,6 +93,7 @@ const Header = () => {
               />
             </svg>
           </div>
+          {user && <div>{user.name}</div>}
         </div>
         {openMenu && (
           <div

@@ -32,4 +32,15 @@ const login = async (req, res) => {
     .json({ name: user.name, email: user.email });
 };
 
-module.exports = { register, login };
+const getUser = async (req, res) => {
+  const { access_token } = req.cookies;
+  if (!access_token) return res.status(401).json('You are not authenticated!');
+
+  jwt.verify(access_token, process.env.SECRET, {}, async (err, user) => {
+    if (err) return res.status(403).json('Token is not valid!');
+    const { name, email, _id } = await User.findById(user.id);
+    res.json({ name, email, _id });
+  });
+};
+
+module.exports = { register, login, getUser };

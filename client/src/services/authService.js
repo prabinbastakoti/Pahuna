@@ -10,4 +10,9 @@ const login = async (credentials) => {
   return response.data;
 };
 
-export default { register, login };
+const getUser = async () => {
+  const response = await axios.get('/api/auth/user');
+  return response.data;
+};
+
+export default { register, login, getUser };

@@ -1,20 +1,28 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
+import { AuthContext } from '../context/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { loading, error, dispatch } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   async function loginUser(e) {
     e.preventDefault();
+
+    dispatch({ type: 'LOGIN_START' });
     const credentials = { email, password };
+
     try {
-      await authService.login(credentials);
+      const res = await authService.login(credentials);
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res });
       navigate('/');
     } catch (err) {
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
       console.log(err.response.data);
     }
   }
@@ -36,13 +44,16 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Login</button>
+          <button disabled={loading} className="primary">
+            Login
+          </button>
           <div className="text-center py-2 text-gray-500">
             Don&apos;t have an account yet?{' '}
             <Link className="underline text-black" to={'/signup'}>
               Register now
             </Link>
           </div>
+          {error && <span>{error.message}</span>}
         </form>
       </div>
     </div>

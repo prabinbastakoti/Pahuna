@@ -7,6 +7,8 @@ const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
 
   async function RegisterUser(e) {
@@ -15,7 +17,7 @@ const SignupPage = () => {
       await authService.register({ name, email, password });
       navigate('/login');
     } catch (err) {
-      console.log(err.response.data.error);
+      setError(err.response.data.error);
     }
   }
 
@@ -49,6 +51,7 @@ const SignupPage = () => {
               Login
             </Link>
           </div>
+          {error && <span>{error}</span>}
         </form>
       </div>
     </div>

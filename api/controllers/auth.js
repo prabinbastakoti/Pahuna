@@ -4,6 +4,11 @@ const jwt = require('jsonwebtoken');
 const salt = bcrypt.genSaltSync(10);
 
 const register = async (req, res) => {
+  if (req.body.password.length < 1)
+    return res
+      .status(400)
+      .json({ error: 'Password is too short. Minimum 3 characters required' });
+
   const hash = bcrypt.hashSync(req.body.password, salt);
   const newUser = new User({ ...req.body, password: hash });
   await newUser.save();

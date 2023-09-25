@@ -23,7 +23,6 @@ const LoginPage = () => {
       navigate('/');
     } catch (err) {
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
-      console.log(err.response.data);
     }
   }
 
@@ -53,7 +52,7 @@ const LoginPage = () => {
               Register now
             </Link>
           </div>
-          {error && <span>{error.message}</span>}
+          {error && <span>{error}</span>}
         </form>
       </div>
     </div>

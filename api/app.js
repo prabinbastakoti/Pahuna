@@ -4,10 +4,11 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const authRoute = require('./routes/auth');
 const middleware = require('./utils/middleware');
 const config = require('./utils/config');
 const logger = require('./utils/logger');
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
 
 mongoose.set('strictQuery', false);
 
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use(express.static('dist'));
 
 app.use('/api/auth', authRoute);
+app.use('/api/user', userRoute);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from 'react';
-import authService from '../services/authService';
+import userService from '../services/userService';
 
 const INITIAL_STATE = {
   user: null,
@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!state.user) {
-      authService.getUser().then((data) => {
+      userService.getUser().then((data) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: data });
       });
     }

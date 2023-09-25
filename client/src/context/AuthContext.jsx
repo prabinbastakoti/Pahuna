@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 import userService from '../services/userService';
 
 const INITIAL_STATE = {
@@ -42,11 +42,13 @@ const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+  const [ready, setready] = useState(false);
 
   useEffect(() => {
     if (!state.user) {
       userService.getUser().then((data) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: data });
+        setready(true);
       });
     }
   }, []);
@@ -58,6 +60,7 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
+        ready,
       }}
     >
       {children}

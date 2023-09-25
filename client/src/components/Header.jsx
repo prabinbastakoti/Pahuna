@@ -102,7 +102,6 @@ const Header = () => {
               />
             </svg>
           </div>
-          {user && <div>{user.name}</div>}
         </div>
         {openMenu && (
           <div

@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import authService from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
+import Spinner from '../components/spinner/Spinner';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const SignupPage = () => {
 
   const [error, setError] = useState('');
 
-  const { user } = useContext(AuthContext);
+  const { user, ready } = useContext(AuthContext);
   const navigate = useNavigate();
 
   async function RegisterUser(e) {
@@ -23,7 +24,15 @@ const SignupPage = () => {
     }
   }
 
-  if (user) {
+  if (!ready) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (ready && user) {
     return <Navigate to={'/'} />;
   }
 

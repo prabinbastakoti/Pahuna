@@ -2,12 +2,13 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import authService from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
+import Spinner from '../components/spinner/Spinner';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const { user, loading, error, dispatch, ready } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -26,7 +27,15 @@ const LoginPage = () => {
     }
   }
 
-  if (user) {
+  if (!ready) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (ready && user) {
     return <Navigate to={'/'} />;
   }
 

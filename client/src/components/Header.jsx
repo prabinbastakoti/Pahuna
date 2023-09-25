@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.svg';
 import { AuthContext } from '../context/AuthContext';
+import authService from '../services/authService';
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -9,7 +10,8 @@ const Header = () => {
   const menu = useRef(null);
   const elRef = useRef(null);
   const [el, setEl] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEl(elRef.current);
@@ -18,6 +20,13 @@ const Header = () => {
   useEffect(() => {
     setOpenMenu(false);
   }, [pathname]);
+
+  const handleLogout = async () => {
+    await authService.logout();
+    dispatch({ type: 'LOGOUT' });
+    navigate('/', { replace: false });
+    setOpenMenu(false);
+  };
 
   const closeMenu = (e) => {
     if (menu.current && openMenu && !menu.current.contains(e.target)) {
@@ -100,23 +109,42 @@ const Header = () => {
             ref={menu}
             className="absolute border border-gray-300 mt-4 shadow-md shadow-gray-150 top-14 right-5 rounded-xl bg-white"
           >
-            <Link to={'/signup'}>
-              <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-medium text-sm">
-                Sign up
-              </div>
-            </Link>
-            <Link to={'/login'}>
-              <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-normal text-sm">
-                Log in
-              </div>
-            </Link>
-            <div className="border-b border-gray-300 my-3"></div>
+            {user && (
+              <Link to={'/profile'}>
+                <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-normal text-sm">
+                  Profile
+                </div>
+              </Link>
+            )}
+            {!user && (
+              <Link to={'/signup'}>
+                <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-medium text-sm">
+                  Sign up
+                </div>
+              </Link>
+            )}
+            {!user && (
+              <Link to={'/login'}>
+                <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-normal text-sm">
+                  Log in
+                </div>
+              </Link>
+            )}
+            {!user && <div className="border-b border-gray-300 my-3"></div>}
             <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 text-sm">
               Airbnb your home
             </div>
             <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 text-sm">
               Help center
             </div>
+            {user && (
+              <div
+                className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 font-normal text-sm"
+                onClick={handleLogout}
+              >
+                Logout
+              </div>
+            )}
           </div>
         )}
       </header>

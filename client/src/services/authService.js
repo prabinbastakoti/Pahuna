@@ -10,4 +10,9 @@ const login = async (credentials) => {
   return response.data;
 };
 
-export default { register, login };
+const logout = async () => {
+  const response = await axios.post('/api/auth/logout');
+  return response.data;
+};
+
+export default { register, login, logout };

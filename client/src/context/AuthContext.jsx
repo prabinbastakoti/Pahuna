@@ -46,10 +46,16 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!state.user) {
-      userService.getUser().then((data) => {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: data });
-        setready(true);
-      });
+      userService
+        .getUser()
+        .then((data) => {
+          dispatch({ type: 'LOGIN_SUCCESS', payload: data });
+          setready(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setready(true);
+        });
     }
   }, []);
 

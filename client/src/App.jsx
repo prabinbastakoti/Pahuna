@@ -16,6 +16,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/profile/:subpage?" element={<ProfilePage />} />
+          <Route path="/profile/:subpage/:action" element={<ProfilePage />} />
         </Route>
       </Routes>
     </AuthContextProvider>

@@ -41,6 +41,21 @@ function Places() {
     setInputFields((prev) => ({ ...prev, [key]: event.target.value }));
   }
 
+  function handlePerksChange(checked, id) {
+    if (checked) {
+      setInputFields((prev) => ({ ...prev, perks: [...prev.perks, id] }));
+    } else {
+      setInputFields((prev) => ({
+        ...prev,
+        perks: [
+          ...prev.perks.filter((selected) => {
+            return selected !== id;
+          }),
+        ],
+      }));
+    }
+  }
+
   async function addPhotoByLink(ev) {
     ev.preventDefault();
     const filename = await uploadService.uploadByLink(inputFields.photoLink);
@@ -179,10 +194,7 @@ function Places() {
             />
 
             {heading('Perks', 'select all the perks of your place')}
-            <Perks
-              handleFormChange={handleFormChange}
-              perks={inputFields.perks}
-            />
+            <Perks handlePerksChange={handlePerksChange} />
 
             {heading('Extra Information', 'house rules, etc')}
             <textarea

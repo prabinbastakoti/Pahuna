@@ -1,8 +1,12 @@
-function Perks() {
+function Perks({ handlePerksChange }) {
+  function handleChange(event) {
+    handlePerksChange(event.target.checked, event.target.id);
+  }
+
   return (
     <div className="mt-2 grid gap-2 grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" id="wifi" onClick={handleChange} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -17,11 +21,10 @@ function Perks() {
             d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
           />
         </svg>
-
         <span>Wifi</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" id="parking" onClick={handleChange} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -40,7 +43,7 @@ function Perks() {
         <span>Free Parking Space</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" id="tv" onClick={handleChange} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -59,7 +62,7 @@ function Perks() {
         <span>TV</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" id="pets" onClick={handleChange} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -78,7 +81,7 @@ function Perks() {
         <span>Pets Allowed</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" id="entrance" onClick={handleChange} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

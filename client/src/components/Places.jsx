@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Perks from './Perks';
+import uploadService from '../services/uploadService';
 
 function Places() {
   const { action } = useParams();
@@ -17,8 +18,6 @@ function Places() {
     checkOut: '',
     maxGuest: 1,
   });
-
-  console.log(inputFields);
 
   function placeHeader(text) {
     return <h2 className="text-2xl mt-4">{text}</h2>;
@@ -39,6 +38,15 @@ function Places() {
 
   function handleFormChange(event, key) {
     setInputFields((prev) => ({ ...prev, [key]: event.target.value }));
+  }
+
+  async function addPhotoByLink(ev) {
+    ev.preventDefault();
+    const filename = await uploadService.uploadByLink(inputFields.photoLink);
+
+    setInputFields((prev) => {
+      return { ...prev, addedPhotos: [...prev.addedPhotos, filename] };
+    });
   }
 
   return (
@@ -101,7 +109,10 @@ function Places() {
                 value={inputFields.photoLink}
                 onChange={(ev) => handleFormChange(ev, ev.target.id)}
               />
-              <button className="bg-gray-200 px-4 rounded-2xl">
+              <button
+                className="bg-gray-200 px-4 rounded-2xl"
+                onClick={addPhotoByLink}
+              >
                 Add&nbsp;photo
               </button>
             </div>
@@ -184,7 +195,7 @@ function Places() {
               </div>
             </div>
             <div className="flex justify-center mt-7 mb-6">
-              <button className="w-3/4 bg-primary text-white p-2 rounded-full">
+              <button className="w-1/2 bg-primary text-white p-2 rounded-full">
                 Save
               </button>
             </div>

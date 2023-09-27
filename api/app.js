@@ -9,6 +9,7 @@ const config = require('./utils/config');
 const logger = require('./utils/logger');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
+const uploadRoute = require('./routes/upload');
 
 mongoose.set('strictQuery', false);
 
@@ -28,6 +29,7 @@ app.use(express.static('dist'));
 
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/upload', uploadRoute);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

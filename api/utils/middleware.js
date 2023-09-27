@@ -1,4 +1,5 @@
 const logger = require('./logger');
+const multer = require('multer');
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' });
@@ -17,7 +18,11 @@ const errorHandler = (error, request, response, next) => {
 
   next(error);
 };
+
+const photosMiddleware = multer({ dest: 'uploads' });
+
 module.exports = {
   unknownEndpoint,
   errorHandler,
+  photosMiddleware,
 };

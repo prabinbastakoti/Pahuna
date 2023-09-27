@@ -37,6 +37,7 @@ function Places() {
   }
 
   function handleFormChange(event, key) {
+    if (key === 'maxGuest' && event.target.value < 1) return;
     setInputFields((prev) => ({ ...prev, [key]: event.target.value }));
   }
 
@@ -48,6 +49,20 @@ function Places() {
       return { ...prev, addedPhotos: [...prev.addedPhotos, filename] };
     });
     setInputFields((prev) => ({ ...prev, photoLink: '' }));
+  }
+
+  async function uploadPhoto(ev) {
+    const files = ev.target.files;
+    const data = new FormData();
+
+    for (let i = 0; i < files.length; i++) {
+      data.append('photos', files[i]);
+    }
+
+    const filenames = await uploadService.upload(data);
+    setInputFields((prev) => {
+      return { ...prev, addedPhotos: [...prev.addedPhotos, ...filenames] };
+    });
   }
 
   return (
@@ -102,6 +117,7 @@ function Places() {
             />
 
             {heading('Photos', 'upload your place photos')}
+
             <div className="flex gap-2">
               <input
                 type="text"
@@ -122,15 +138,21 @@ function Places() {
               {inputFields.addedPhotos.length > 0 &&
                 inputFields.addedPhotos.map((item) => {
                   return (
-                    <div key={item}>
+                    <div key={item} className="h-32 flex">
                       <img
-                        className="rounded-2xl h-full"
+                        className="rounded-2xl w-full object-cover "
                         src={'/api/uploads/' + item}
                       />
                     </div>
                   );
                 })}
-              <button className="flex w-auto items-center justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+              <label className="flex h-32 w-auto items-center justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600 cursor-pointer">
+                <input
+                  type="file"
+                  multiple
+                  className="hidden"
+                  onChange={uploadPhoto}
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -146,7 +168,7 @@ function Places() {
                   />
                 </svg>
                 Upload
-              </button>
+              </label>
             </div>
 
             {heading('Description', 'description of your place')}

@@ -25,6 +25,7 @@ mongoose
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use('/api/uploads', express.static(__dirname + '/uploads'));
 app.use(express.static('dist'));
 
 app.use('/api/auth', authRoute);

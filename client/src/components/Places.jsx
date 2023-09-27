@@ -47,6 +47,7 @@ function Places() {
     setInputFields((prev) => {
       return { ...prev, addedPhotos: [...prev.addedPhotos, filename] };
     });
+    setInputFields((prev) => ({ ...prev, photoLink: '' }));
   }
 
   return (
@@ -117,8 +118,19 @@ function Places() {
               </button>
             </div>
 
-            <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              <button className="flex w-auto justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+            <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {inputFields.addedPhotos.length > 0 &&
+                inputFields.addedPhotos.map((item) => {
+                  return (
+                    <div key={item}>
+                      <img
+                        className="rounded-2xl h-full"
+                        src={'/api/uploads/' + item}
+                      />
+                    </div>
+                  );
+                })}
+              <button className="flex w-auto items-center justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

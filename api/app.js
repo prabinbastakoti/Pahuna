@@ -20,7 +20,7 @@ mongoose
     logger.info('Connected to mongoDB');
   })
   .catch((error) => {
-    logger.error('error connecting to MongoDB:', error.message);
+    logger.error('MongoDB Disconnected');
   });
 
 app.use(cors());

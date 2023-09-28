@@ -5,4 +5,9 @@ const addPlace = async (details) => {
   return response.data;
 };
 
-export default { addPlace };
+const getPlaces = async () => {
+  const response = await axios.get('/api/place');
+  return response.data;
+};
+
+export default { addPlace, getPlaces };

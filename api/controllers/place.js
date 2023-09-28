@@ -37,4 +37,15 @@ const addPlace = async (req, res) => {
   });
 };
 
-module.exports = { addPlace };
+const getPlaces = async (req, res) => {
+  const { access_token } = req.cookies;
+
+  jwt.verify(access_token, config.SECRET, {}, async (err, user) => {
+    if (err) throw err;
+    const { id } = user;
+    const userPlaces = await Place.find({ owner: id });
+    res.json(userPlaces);
+  });
+};
+
+module.exports = { addPlace, getPlaces };

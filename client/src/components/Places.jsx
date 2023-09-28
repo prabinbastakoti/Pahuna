@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from './PhotosUploader';
 import placeService from '../services/placeService';
+import PlaceLists from './PlaceLists';
 
 function Places() {
   const { action } = useParams();
@@ -73,6 +74,7 @@ function Places() {
             </svg>
             Add new place
           </Link>
+          <PlaceLists />
         </div>
       )}
 

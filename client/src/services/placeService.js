@@ -5,9 +5,19 @@ const addPlace = async (details) => {
   return response.data;
 };
 
+const updatePlace = async (id, newPlace) => {
+  const response = await axios.put('/api/place/' + id, newPlace);
+  return response.data;
+};
+
 const getPlaces = async () => {
   const response = await axios.get('/api/place');
   return response.data;
 };
 
-export default { addPlace, getPlaces };
+const getPlaceById = async (id) => {
+  const response = await axios.get('/api/place/' + id);
+  return response.data;
+};
+
+export default { addPlace, getPlaces, getPlaceById, updatePlace };

@@ -1,4 +1,4 @@
-function Perks({ setInputFields }) {
+function Perks({ inputFields, setInputFields }) {
   function handleChange(event) {
     if (event.target.checked) {
       setInputFields((prev) => ({
@@ -20,7 +20,12 @@ function Perks({ setInputFields }) {
   return (
     <div className="mt-2 grid gap-2 grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" id="wifi" onClick={handleChange} />
+        <input
+          type="checkbox"
+          checked={inputFields.perks.includes('wifi')}
+          id="wifi"
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,7 +43,12 @@ function Perks({ setInputFields }) {
         <span>Wifi</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" id="parking" onClick={handleChange} />
+        <input
+          type="checkbox"
+          id="parking"
+          checked={inputFields.perks.includes('parking')}
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,7 +67,12 @@ function Perks({ setInputFields }) {
         <span>Free Parking Space</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" id="tv" onClick={handleChange} />
+        <input
+          type="checkbox"
+          id="tv"
+          checked={inputFields.perks.includes('tv')}
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -76,7 +91,12 @@ function Perks({ setInputFields }) {
         <span>TV</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" id="pets" onClick={handleChange} />
+        <input
+          type="checkbox"
+          id="pets"
+          checked={inputFields.perks.includes('pets')}
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -95,7 +115,12 @@ function Perks({ setInputFields }) {
         <span>Pets Allowed</span>
       </label>
       <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
-        <input type="checkbox" id="entrance" onClick={handleChange} />
+        <input
+          type="checkbox"
+          id="entrance"
+          checked={inputFields.perks.includes('entrance')}
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

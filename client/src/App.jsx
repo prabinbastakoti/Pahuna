@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import Layout from './Layout';
 import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
+import SinglePage from './pages/SinglePage';
 import { AuthContextProvider } from './context/AuthContext.jsx';
 
 function App() {
@@ -15,8 +16,11 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/profile/:subpage?" element={<ProfilePage />} />
-          <Route path="/profile/:subpage/:action" element={<ProfilePage />} />
+          <Route
+            path="/profile/:subpage?/:action?/:id?"
+            element={<ProfilePage />}
+          />
+          <Route path="/place/:id" element={<SinglePage />} />
         </Route>
       </Routes>
     </AuthContextProvider>

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from './PhotosUploader';
+import placeService from '../services/placeService';
 
 function Places() {
   const { action } = useParams();
+  const navigate = useNavigate();
 
   const [inputFields, setInputFields] = useState({
     title: '',
@@ -41,6 +43,12 @@ function Places() {
     setInputFields((prev) => ({ ...prev, [key]: event.target.value }));
   }
 
+  async function addNewPlace(ev) {
+    ev.preventDefault();
+    await placeService.addPlace(inputFields);
+    navigate('/profile/accomodations');
+  }
+
   return (
     <div>
       {action !== 'new' && (
@@ -70,7 +78,7 @@ function Places() {
 
       {action === 'new' && (
         <div>
-          <form className="max-w-4xl mx-auto">
+          <form className="max-w-4xl mx-auto" onSubmit={addNewPlace}>
             {heading(
               'Title',
               'title for your place, should be short and catchy'

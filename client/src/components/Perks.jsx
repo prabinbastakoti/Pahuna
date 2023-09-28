@@ -1,6 +1,20 @@
-function Perks({ handlePerksChange }) {
+function Perks({ setInputFields }) {
   function handleChange(event) {
-    handlePerksChange(event.target.checked, event.target.id);
+    if (event.target.checked) {
+      setInputFields((prev) => ({
+        ...prev,
+        perks: [...prev.perks, event.target.id],
+      }));
+    } else {
+      setInputFields((prev) => ({
+        ...prev,
+        perks: [
+          ...prev.perks.filter((selected) => {
+            return selected !== event.target.id;
+          }),
+        ],
+      }));
+    }
   }
 
   return (

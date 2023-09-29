@@ -12,12 +12,12 @@ function PlaceLists() {
   }, []);
 
   return (
-    <div className="mt-8 max-w-4xl mx-auto text-left">
+    <div className="mt-8 mb-6 max-w-5xl mx-auto text-left">
       {places.length > 0 &&
         places.map((place) => (
           <div
             key={place.id}
-            className="flex gap-4 bg-gray-100 p-4 rounded-2xl"
+            className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
           >
             <div className="w-32 h-32 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (

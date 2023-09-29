@@ -77,7 +77,7 @@ function PlaceForm() {
 
   return (
     <div>
-      <form className="max-w-4xl mx-auto" onSubmit={savePlace}>
+      <form className="max-w-5xl mx-auto" onSubmit={savePlace}>
         {heading('Title', 'title for your place, should be short and catchy')}
         <input
           type="text"

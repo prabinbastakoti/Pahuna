@@ -14,6 +14,7 @@ const placeSchema = new mongoose.Schema({
   checkIn: String,
   checkOut: String,
   maxGuests: Number,
+  price: Number,
 });
 
 placeSchema.set('toJSON', {

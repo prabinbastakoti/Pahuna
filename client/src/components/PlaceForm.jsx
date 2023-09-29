@@ -19,6 +19,7 @@ function PlaceForm() {
     checkIn: '',
     checkOut: '',
     maxGuest: 1,
+    price: 100,
   });
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function PlaceForm() {
         checkIn: data.checkIn,
         checkOut: data.checkOut,
         maxGuest: data.maxGuests,
+        price: data.price,
       })
     );
   }, [id]);
@@ -124,7 +126,7 @@ function PlaceForm() {
           'add checkIn & checkOut time, remember to have some time window for cleaning the room between guests'
         )}
 
-        <div className="flex gap-2 mt-2 justify-between">
+        <div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-2 justify-between">
           <div>
             <h3>CheckIn time</h3>
             <input
@@ -152,6 +154,16 @@ function PlaceForm() {
               id="maxGuest"
               placeholder="eg. 4"
               value={inputFields.maxGuest}
+              onChange={(ev) => handleFormChange(ev, ev.target.id)}
+            />
+          </div>
+          <div>
+            <h3>Price</h3>
+            <input
+              type="number"
+              id="price"
+              placeholder="eg. 120"
+              value={inputFields.price}
               onChange={(ev) => handleFormChange(ev, ev.target.id)}
             />
           </div>

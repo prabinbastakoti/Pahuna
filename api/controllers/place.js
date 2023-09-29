@@ -15,6 +15,7 @@ const addPlace = async (req, res) => {
     checkIn,
     checkOut,
     maxGuest,
+    price,
   } = req.body;
 
   jwt.verify(access_token, config.SECRET, {}, async (err, user) => {
@@ -30,6 +31,7 @@ const addPlace = async (req, res) => {
       checkIn,
       checkOut,
       maxGuests: maxGuest,
+      price,
     });
 
     await newPlace.save();
@@ -67,6 +69,7 @@ const updatePlace = async (req, res) => {
     checkIn,
     checkOut,
     maxGuest,
+    price,
   } = req.body;
 
   jwt.verify(access_token, config.SECRET, {}, async (err, user) => {
@@ -85,10 +88,22 @@ const updatePlace = async (req, res) => {
         checkIn,
         checkOut,
         maxGuests: maxGuest,
+        price,
       });
       res.json('ok');
     }
   });
 };
 
-module.exports = { addPlace, getPlaces, getPlaceById, updatePlace };
+const getAllPlaces = async (req, res) => {
+  const places = await Place.find({});
+  res.json(places);
+};
+
+module.exports = {
+  addPlace,
+  getPlaces,
+  getPlaceById,
+  updatePlace,
+  getAllPlaces,
+};

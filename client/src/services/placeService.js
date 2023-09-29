@@ -20,4 +20,9 @@ const getPlaceById = async (id) => {
   return response.data;
 };
 
-export default { addPlace, getPlaces, getPlaceById, updatePlace };
+const getAllPlace = async () => {
+  const response = await axios.get('/api/place');
+  return response.data;
+};
+
+export default { addPlace, getPlaces, getPlaceById, updatePlace, getAllPlace };

@@ -46,8 +46,6 @@ const Header = ({ type }) => {
     menuClassName += ' ml-28';
   }
 
-  console.log(menuClassName);
-
   return (
     <div>
       <header className="flex items-center justify-between">
@@ -60,7 +58,7 @@ const Header = ({ type }) => {
           <div className="border-l border-gray-300 "></div>
           <div>Any Week</div>
           <div className="border-l border-gray-300"></div>
-          <div>Add guests</div>
+          <div>Add Guests</div>
           <button className="bg-primary text-white p-1 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"

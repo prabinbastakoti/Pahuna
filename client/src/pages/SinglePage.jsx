@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import placeService from '../services/placeService';
 import Spinner from '../components/spinner/Spinner';
+import BookingWidget from '../components/BookingWidget';
 
 function SinglePage() {
   const [place, setPlace] = useState(null);
@@ -67,14 +68,36 @@ function SinglePage() {
               src={'/api/uploads/' + place.photos[1]}
             />
           )}
-          {place.photos?.[2] && (
-            <img
-              className="aspect-square object-cover relative top-2"
-              src={'/api/uploads/' + place.photos[2]}
-            />
-          )}
+          <div className="relative">
+            {place.photos?.[2] && (
+              <img
+                className="aspect-square object-cover relative top-2"
+                src={'/api/uploads/' + place.photos[2]}
+              />
+            )}
+            <button className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-4 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 256 256"
+                className="w-4 h-4"
+              >
+                <rect width="256" height="256" fill="none" />
+                <circle cx="60" cy="60" r="16" />
+                <circle cx="128" cy="60" r="16" />
+                <circle cx="196" cy="60" r="16" />
+                <circle cx="60" cy="128" r="16" />
+                <circle cx="128" cy="128" r="16" />
+                <circle cx="196" cy="128" r="16" />
+                <circle cx="60" cy="196" r="16" />
+                <circle cx="128" cy="196" r="16" />
+                <circle cx="196" cy="196" r="16" />
+              </svg>
+              Show all photos
+            </button>
+          </div>
         </div>
       </div>
+      <BookingWidget place={place} />
     </div>
   );
 }

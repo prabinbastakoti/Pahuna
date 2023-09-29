@@ -122,27 +122,27 @@ function PlaceForm() {
         />
 
         {heading(
-          'CheckIn & CheckOut',
+          'Check-in & CheckOut',
           'add checkIn & checkOut time, remember to have some time window for cleaning the room between guests'
         )}
 
         <div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-2 justify-between">
           <div>
-            <h3>CheckIn time</h3>
+            <h3>Check-in time</h3>
             <input
               type="text"
-              placeholder="eg. 14:00"
+              placeholder="eg. after 14:00 PM / Flexible"
               id="checkIn"
               value={inputFields.checkIn}
               onChange={(ev) => handleFormChange(ev, ev.target.id)}
             />
           </div>
           <div>
-            <h3>CheckOut time</h3>
+            <h3>Checkout time</h3>
             <input
               type="text"
               id="checkOut"
-              placeholder="eg. 12:00"
+              placeholder="eg. before 12:00 PM / Flexible"
               value={inputFields.checkOut}
               onChange={(ev) => handleFormChange(ev, ev.target.id)}
             />

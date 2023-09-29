@@ -44,7 +44,7 @@ const Header = () => {
       <header className="flex items-center justify-between">
         <Link to={'/'} className="flex items-center gap-1">
           <img src={Logo} className="w-8 h-8" />
-          <span className="font-bold text-xl">airbnb</span>
+          <span className="font-bold text-xl text-primary">airbnb</span>
         </Link>
         <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-150">
           <div>Anywhere</div>

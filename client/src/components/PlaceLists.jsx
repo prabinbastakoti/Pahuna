@@ -7,7 +7,7 @@ function PlaceLists() {
 
   useEffect(() => {
     placeService.getPlaces().then((data) => {
-      setPlaces(data);
+      setPlaces(data.reverse());
     });
   }, []);
 

@@ -17,7 +17,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 max-w-5xl md:grid-cols-3 lg:grid-cols-4 mx-auto ">
+    <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 max-w-5xl sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 mx-auto ">
       {places.length > 0 &&
         places.map((place) => {
           return (
@@ -25,7 +25,7 @@ const HomePage = () => {
               <div className="bg-gray-500 rounded-2xl mb-2 overflow-hidden">
                 {place.photos?.[0] && (
                   <img
-                    className="rounded-2xl aspect-square object-cover hover:scale-125 transition duration-500 cursor-pointer"
+                    className="rounded-2xl aspect-square object-cover md:hover:scale-125 transition duration-500 cursor-pointer"
                     src={'/api/uploads/' + place.photos[0]}
                   />
                 )}

@@ -8,12 +8,21 @@ import Header from '../components/Header';
 const HomePage = () => {
   const { ready } = useContext(AuthContext);
   const [places, setPlaces] = useState([]);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    placeService.getAllPlace().then((data) => setPlaces(data));
+    setloading(true);
+    placeService.getAllPlace().then((data) => {
+      setPlaces(data);
+      setloading(false);
+    });
   }, []);
 
   if (!ready) {
+    return <Spinner />;
+  }
+
+  if (loading || !places) {
     return <Spinner />;
   }
 

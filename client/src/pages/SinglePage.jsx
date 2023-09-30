@@ -6,14 +6,14 @@ import BookingWidget from '../components/BookingWidget';
 
 function SinglePage() {
   const [place, setPlace] = useState(null);
-  const [loading, setLodaing] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    setLodaing(true);
+    setLoading(true);
     placeService.getPlaceById(id).then((data) => {
       setPlace(data);
-      setLodaing(false);
+      setLoading(false);
     });
   }, []);
 

@@ -10,7 +10,7 @@ const router = require('express').Router();
 
 router.post('/', addPlace);
 router.put('/:id', updatePlace);
-router.get('/', getPlaces);
+router.get('/user-places', getPlaces);
 router.get('/:id', getPlaceById);
 router.get('/', getAllPlaces);
 

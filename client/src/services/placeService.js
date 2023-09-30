@@ -11,7 +11,7 @@ const updatePlace = async (id, newPlace) => {
 };
 
 const getPlaces = async () => {
-  const response = await axios.get('/api/place');
+  const response = await axios.get('/api/place/user-places');
   return response.data;
 };
 

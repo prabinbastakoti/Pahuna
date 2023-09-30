@@ -1,26 +1,19 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
 import Spinner from '../components/spinner/Spinner';
 import placeService from '../services/placeService';
 import Header from '../components/Header';
 
 const HomePage = () => {
-  const { ready } = useContext(AuthContext);
   const [places, setPlaces] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    setloading(true);
     placeService.getAllPlace().then((data) => {
       setPlaces(data);
       setloading(false);
     });
   }, []);
-
-  if (!ready) {
-    return <Spinner />;
-  }
 
   if (loading || !places) {
     return <Spinner />;
@@ -28,7 +21,7 @@ const HomePage = () => {
 
   return (
     <div className="px-12 py-5 max-w-8xl mx-auto">
-      <Header type="home" />
+      <Header type={'home'} />
       <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {places.length > 0 &&
           places.map((place) => {

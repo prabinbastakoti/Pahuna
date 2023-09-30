@@ -16,11 +16,7 @@ const ProfilePage = () => {
   }
 
   if (!ready) {
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (ready && !user) {

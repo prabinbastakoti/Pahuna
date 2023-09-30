@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 import placeService from '../services/placeService';
 import { Link } from 'react-router-dom';
+import Spinner from '../components/spinner/Spinner';
 
 function PlaceLists() {
   const [places, setPlaces] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     placeService.getPlaces().then((data) => {
       setPlaces(data.reverse());
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="mt-8 mb-6 max-w-5xl mx-auto text-left">

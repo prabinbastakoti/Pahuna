@@ -3,10 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from './PhotosUploader';
 import placeService from '../services/placeService';
+import Spinner from './spinner/Spinner';
 
 function PlaceForm() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
 
   const [inputFields, setInputFields] = useState({
     title: '',
@@ -24,8 +26,8 @@ function PlaceForm() {
 
   useEffect(() => {
     if (!id) return;
-
-    placeService.getPlaceById(id).then((data) =>
+    setLoading(true);
+    placeService.getPlaceById(id).then((data) => {
       setInputFields({
         title: data.title,
         address: data.address,
@@ -38,9 +40,14 @@ function PlaceForm() {
         checkOut: data.checkOut,
         maxGuest: data.maxGuests,
         price: data.price,
-      })
-    );
+      });
+      setLoading(false);
+    });
   }, [id]);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   function placeHeader(text) {
     return <h2 className="text-2xl mt-4">{text}</h2>;

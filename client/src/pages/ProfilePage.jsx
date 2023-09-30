@@ -4,6 +4,7 @@ import Spinner from '../components/spinner/Spinner';
 import { Navigate, Link, useParams, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import Places from '../components/Places';
+import Bookings from '../components/Bookings';
 
 const ProfilePage = () => {
   const { user, ready, dispatch } = useContext(AuthContext);
@@ -109,6 +110,7 @@ const ProfilePage = () => {
           </button>
         </div>
       )}
+      {subpage === 'bookings' && <Bookings />}
       {subpage === 'accomodations' && <Places />}
     </div>
   );

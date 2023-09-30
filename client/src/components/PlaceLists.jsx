@@ -19,18 +19,18 @@ function PlaceLists() {
   }
 
   return (
-    <div className="mt-8 mb-6 max-w-5xl mx-auto text-left">
+    <div className="mt-8 mb-6">
       {places.length > 0 &&
         places.map((place) => (
           <div
             key={place.id}
             className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
           >
-            <div className="w-32 h-32 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
+            <div className="w-36 h-36 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (
                 <img
                   src={'/api/uploads/' + place.photos[0]}
-                  className="w-32 h-32 object-cover rounded-xl hover:scale-125 transition duration-500 cursor-pointer"
+                  className="w-full h-full object-cover rounded-xl hover:scale-125 transition duration-500 cursor-pointer"
                 />
               )}
             </div>

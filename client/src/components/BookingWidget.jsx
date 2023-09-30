@@ -1,6 +1,50 @@
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { differenceInCalendarDays } from 'date-fns';
+import { AuthContext } from '../context/AuthContext';
+import bookService from '../services/bookService';
 
 function BookingWidget({ place }) {
+  const [checkin, setCheckin] = useState('');
+  const [checkout, setCheckout] = useState('');
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) return;
+    setName(user.name);
+  }, []);
+
+  let numberOfNights = 0;
+
+  if (checkin && checkout) {
+    numberOfNights = differenceInCalendarDays(
+      new Date(checkout),
+      new Date(checkin)
+    );
+    if (numberOfNights < 0) {
+      numberOfNights = 0;
+    }
+  }
+  const buttonDisabled = checkin && checkout && name && number ? false : true;
+
+  const bookPlace = async () => {
+    const info = {
+      checkin,
+      checkout,
+      numberOfGuests,
+      name,
+      number,
+      place: place.id,
+      price: numberOfNights * place.price,
+    };
+    await bookService.bookPlace(info);
+    navigate('/profile/bookings');
+  };
+
   return (
     <div>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-[3fr_2fr]">
@@ -50,6 +94,9 @@ function BookingWidget({ place }) {
             <span className="font-semibold text-3xl">${place.price} </span>{' '}
             night
           </h1>
+          <p className="pl-4 py-1 text-xs text-gray-500 text-left">
+            * all fields are required
+          </p>
           <div className="border mt-2 rounded-2xl ">
             <div className="grid grid-cols-2 p-1">
               <label className="flex flex-col px-4">
@@ -57,6 +104,8 @@ function BookingWidget({ place }) {
                 <input
                   type="date"
                   className="text-center p-2 rounded-2xl mt-1"
+                  value={checkin}
+                  onChange={(e) => setCheckin(e.target.value)}
                 />
               </label>
               <label className="border-l flex flex-col px-4">
@@ -64,17 +113,67 @@ function BookingWidget({ place }) {
                 <input
                   type="date"
                   className=" text-center p-2 rounded-2xl mt-1"
+                  value={checkout}
+                  onChange={(e) => setCheckout(e.target.value)}
                 />
               </label>
             </div>
             <div className="px-4 py-1 border-t">
               <label>
                 Number of Guests:
-                <input type="number" />
+                <input
+                  type="number"
+                  value={numberOfGuests}
+                  onChange={(e) => {
+                    if (e.target.value < 1) return;
+                    setNumberOfGuests(e.target.value);
+                  }}
+                />
               </label>
             </div>
+            {checkin && checkout && (
+              <>
+                <div className="px-4 py-1 border-t">
+                  <label>
+                    Name
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />
+                  </label>
+                </div>
+                <div className="px-4 py-1 border-t">
+                  <label>
+                    Contact No.
+                    <input
+                      type="tel"
+                      value={number}
+                      onChange={(e) => {
+                        setNumber(e.target.value);
+                      }}
+                    />
+                  </label>
+                </div>
+              </>
+            )}
           </div>
-          <button className="primary mt-2">Book This Place</button>
+          <button
+            disabled={buttonDisabled}
+            className="primary mt-2 disabled:cursor-not-allowed"
+            onClick={bookPlace}
+          >
+            Book now{' '}
+            {checkin && checkout && (
+              <span>
+                for ${numberOfNights * place.price} ({numberOfNights}{' '}
+                {numberOfNights <= 1 ? <span>night</span> : <span>nights</span>}
+                )
+              </span>
+            )}
+          </button>
         </div>
       </div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2">

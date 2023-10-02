@@ -26,28 +26,28 @@ function PlaceLists() {
             key={place.id}
             className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
           >
-            <div className="w-36 h-36 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
+            <div className="w-28 h-28 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (
                 <img
                   src={'/api/uploads/' + place.photos[0]}
-                  className="w-full h-full object-cover rounded-xl hover:scale-125 transition duration-500 cursor-pointer"
+                  className="w-full h-full object-cover rounded-xl md:hover:scale-125 transition duration-500 cursor-pointer"
                 />
               )}
             </div>
             <div>
               <Link to={'/place/' + place.id}>
-                <h2 className="text-xl hover:underline cursor-pointer text-left">
+                <h2 className="text-base hover:underline cursor-pointer text-left">
                   {place.title}
                 </h2>
               </Link>
-              <p className="flex gap-1 items-center text-sm mt-1 text-gray-600 md:mt-1.5">
+              <p className="flex gap-1 items-center mt-1 text-gray-600 md:mt-1.5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                 >
                   <path
                     strokeLinecap="round"
@@ -60,7 +60,7 @@ function PlaceLists() {
                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                   />
                 </svg>
-                {place.address}
+                <span className="text-sm">{place.address}</span>
               </p>
               <div className="mt-4 hidden sm:flex sm:flex-wrap sm:gap-2 md:mt-6">
                 {place.perks.length > 0 &&

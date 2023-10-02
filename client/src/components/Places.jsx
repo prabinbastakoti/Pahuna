@@ -10,7 +10,7 @@ function Places() {
       {action !== 'new' && action !== 'update' && (
         <div className="text-center">
           <Link
-            className="inline-flex bg-primary text-white rounded-full py-2 px-6"
+            className="inline-flex bg-primary text-white rounded-full py-2 px-4 gap-1 text-sm items-center"
             to="/profile/accomodations/new"
           >
             <svg
@@ -19,7 +19,7 @@ function Places() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-4 h-4"
             >
               <path
                 strokeLinecap="round"
@@ -27,7 +27,7 @@ function Places() {
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-            Add new place
+            <span className="text-sm">Add new place</span>
           </Link>
           <PlaceLists />
         </div>

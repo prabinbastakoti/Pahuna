@@ -31,7 +31,7 @@ function SinglePage() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w- h-5"
         >
           <path
             strokeLinecap="round"
@@ -46,7 +46,7 @@ function SinglePage() {
         </svg>
 
         <a
-          className="my-2 block font-semibold underline"
+          className="my-2 block font-semibold underline text-base"
           target="_blank"
           rel="noreferrer"
           href={'https://maps.google.com/?q=' + place.address}
@@ -54,7 +54,7 @@ function SinglePage() {
           {place.address}
         </a>
       </div>
-      <div className="mt-4 grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
+      <div className="relative mt-4 grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
         {place.photos?.[0] && (
           <img
             className="aspect-square object-cover"
@@ -68,34 +68,32 @@ function SinglePage() {
               src={'/api/uploads/' + place.photos[1]}
             />
           )}
-          <div className="relative">
-            {place.photos?.[2] && (
-              <img
-                className="aspect-square object-cover relative top-2"
-                src={'/api/uploads/' + place.photos[2]}
-              />
-            )}
-            <button className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-4 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 256"
-                className="w-4 h-4"
-              >
-                <rect width="256" height="256" fill="none" />
-                <circle cx="60" cy="60" r="16" />
-                <circle cx="128" cy="60" r="16" />
-                <circle cx="196" cy="60" r="16" />
-                <circle cx="60" cy="128" r="16" />
-                <circle cx="128" cy="128" r="16" />
-                <circle cx="196" cy="128" r="16" />
-                <circle cx="60" cy="196" r="16" />
-                <circle cx="128" cy="196" r="16" />
-                <circle cx="196" cy="196" r="16" />
-              </svg>
-              Show all photos
-            </button>
-          </div>
+          {place.photos?.[2] && (
+            <img
+              className="aspect-square object-cover relative top-2"
+              src={'/api/uploads/' + place.photos[2]}
+            />
+          )}
         </div>
+        <button className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-3 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            className="w-4 h-4"
+          >
+            <rect width="256" height="256" fill="none" />
+            <circle cx="60" cy="60" r="16" />
+            <circle cx="128" cy="60" r="16" />
+            <circle cx="196" cy="60" r="16" />
+            <circle cx="60" cy="128" r="16" />
+            <circle cx="128" cy="128" r="16" />
+            <circle cx="196" cy="128" r="16" />
+            <circle cx="60" cy="196" r="16" />
+            <circle cx="128" cy="196" r="16" />
+            <circle cx="196" cy="196" r="16" />
+          </svg>
+          <span className="text-xs">Show&nbsp;all&nbsp;photos</span>
+        </button>
       </div>
       <BookingWidget place={place} />
     </div>

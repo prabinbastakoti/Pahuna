@@ -19,7 +19,7 @@ function Perks({ inputFields, setInputFields }) {
 
   return (
     <div className="mt-2 grid gap-2 grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
-      <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
+      <label className="border p-4 flex gap-2 rounded-2xl items-center cursor-pointer">
         <input
           type="checkbox"
           checked={inputFields.perks.includes('wifi')}
@@ -32,7 +32,7 @@ function Perks({ inputFields, setInputFields }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -40,9 +40,9 @@ function Perks({ inputFields, setInputFields }) {
             d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
           />
         </svg>
-        <span>Wifi</span>
+        <span className="text-sm">Wifi</span>
       </label>
-      <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
+      <label className="border p-4 flex gap-2 rounded-2xl items-center cursor-pointer">
         <input
           type="checkbox"
           id="parking"
@@ -55,7 +55,7 @@ function Perks({ inputFields, setInputFields }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -64,9 +64,9 @@ function Perks({ inputFields, setInputFields }) {
           />
         </svg>
 
-        <span>Free Parking Space</span>
+        <span className="text-sm">Free&nbsp;Parking</span>
       </label>
-      <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
+      <label className="border p-4 flex gap-2 rounded-2xl items-center cursor-pointer">
         <input
           type="checkbox"
           id="tv"
@@ -79,7 +79,7 @@ function Perks({ inputFields, setInputFields }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -88,9 +88,9 @@ function Perks({ inputFields, setInputFields }) {
           />
         </svg>
 
-        <span>TV</span>
+        <span className="text-sm">TV</span>
       </label>
-      <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
+      <label className="border p-4 flex gap-2 rounded-2xl items-center cursor-pointer">
         <input
           type="checkbox"
           id="pets"
@@ -103,7 +103,7 @@ function Perks({ inputFields, setInputFields }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -112,9 +112,9 @@ function Perks({ inputFields, setInputFields }) {
           />
         </svg>
 
-        <span>Pets Allowed</span>
+        <span className="text-sm">Pets Allowed</span>
       </label>
-      <label className="border p-4 flex gap-3 rounded-2xl items-center cursor-pointer">
+      <label className="w-fit border p-4 flex gap-2 rounded-2xl items-center cursor-pointer">
         <input
           type="checkbox"
           id="entrance"
@@ -127,7 +127,7 @@ function Perks({ inputFields, setInputFields }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-5 h-5"
         >
           <path
             strokeLinecap="round"
@@ -136,7 +136,7 @@ function Perks({ inputFields, setInputFields }) {
           />
         </svg>
 
-        <span>Private Entrance</span>
+        <span className="text-sm">Private&nbsp;Entrance</span>
       </label>
     </div>
   );

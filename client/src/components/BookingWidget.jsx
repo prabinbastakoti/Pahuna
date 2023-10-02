@@ -103,7 +103,7 @@ function BookingWidget({ place }) {
                 Check-in:
                 <input
                   type="date"
-                  className="text-center p-2 rounded-2xl mt-1"
+                  className="text-center text-sm p-2 rounded-2xl mt-1"
                   value={checkin}
                   onChange={(e) => setCheckin(e.target.value)}
                 />
@@ -112,7 +112,7 @@ function BookingWidget({ place }) {
                 Checkout:
                 <input
                   type="date"
-                  className=" text-center p-2 rounded-2xl mt-1"
+                  className=" text-center text-sm p-2 rounded-2xl mt-1"
                   value={checkout}
                   onChange={(e) => setCheckout(e.target.value)}
                 />
@@ -162,7 +162,7 @@ function BookingWidget({ place }) {
           </div>
           <button
             disabled={buttonDisabled}
-            className="primary mt-2 disabled:cursor-not-allowed"
+            className="primary mt-2 disabled:cursor-not-allowed text-base"
             onClick={bookPlace}
           >
             Book now{' '}

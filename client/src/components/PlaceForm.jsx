@@ -50,11 +50,11 @@ function PlaceForm() {
   }
 
   function placeHeader(text) {
-    return <h2 className="text-2xl mt-4">{text}</h2>;
+    return <h2 className="text-xl mt-4">{text}</h2>;
   }
 
   function placeSubHeader(text) {
-    return <p className="text-gray-500 text-sm">{text}</p>;
+    return <p className="text-gray-500 text-xs">{text}</p>;
   }
 
   function heading(header, subHeader) {

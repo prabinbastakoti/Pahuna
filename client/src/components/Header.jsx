@@ -40,10 +40,10 @@ const Header = ({ type }) => {
   document.addEventListener('mousedown', closeMenu);
 
   let menuClassName =
-    'flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-150';
+    'hidden md:flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-150';
 
   if (type === 'home') {
-    menuClassName += ' ml-28';
+    menuClassName += ' lg:ml-28';
   }
 
   return (
@@ -78,7 +78,7 @@ const Header = ({ type }) => {
         </div>
         <div className="flex items-center gap-5">
           {type === 'home' && (
-            <div className="flex gap-3 items-center">
+            <div className="hidden lg:flex gap-3 items-center">
               <div className="font-medium text-sm hover:bg-gray-100 px-4 py-2 rounded-full cursor-pointer">
                 Airbnb your home
               </div>
@@ -109,7 +109,7 @@ const Header = ({ type }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
@@ -122,7 +122,7 @@ const Header = ({ type }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-6 h-6 relative top-1"
+                className="w-5 h-5 relative top-1"
               >
                 <path
                   fillRule="evenodd"

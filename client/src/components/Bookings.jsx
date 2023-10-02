@@ -27,7 +27,7 @@ function Bookings() {
         return (
           <div
             key={booking.id}
-            className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
+            className="flex gap-4 bg-gray-100 py-4 px-2 rounded-2xl mt-6"
           >
             <div className="w-28 h-28 shrink-0 overflow-hidden rounded-xl">
               {booking.place.photos?.[0] && (

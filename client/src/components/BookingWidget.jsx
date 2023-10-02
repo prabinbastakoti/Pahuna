@@ -49,10 +49,12 @@ function BookingWidget({ place }) {
     <div>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-[3fr_2fr]">
         <div>
-          <h2 className="mt-6 text-xl font-semibold">About This Place</h2>
-          <p className="mt-1 line-clamp-4 text-gray-700">{place.description}</p>
+          <h2 className="mt-6 text-lg font-semibold">About This Place</h2>
+          <p className="mt-1 line-clamp-4 text-gray-700 text-sm">
+            {place.description}
+          </p>
           <Link className="mt-1 flex items-center">
-            <span className=" font-medium underline">Show more </span>
+            <span className=" font-medium underline text-sm">Show more </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -69,10 +71,12 @@ function BookingWidget({ place }) {
             </svg>
           </Link>
 
-          <h2 className="mt-8 text-xl font-semibold">Extra Info</h2>
-          <p className="mt-1 line-clamp-2 text-gray-700">{place.extraInfo}</p>
+          <h2 className="mt-8 text-lg font-semibold">Extra Info</h2>
+          <p className="mt-1 line-clamp-2 text-gray-700 text-sm">
+            {place.extraInfo}
+          </p>
           <Link className="mt-1 flex items-center">
-            <span className=" font-medium underline">Show more </span>
+            <span className="font-medium underline text-sm">Show more </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -90,8 +94,8 @@ function BookingWidget({ place }) {
           </Link>
         </div>
         <div className="mt-6 border px-2 py-4 rounded-2xl bg-gray-50 shadow-md">
-          <h1 className="text-base py-1 pl-4">
-            <span className="font-semibold text-3xl">${place.price} </span>{' '}
+          <h1 className="text-sm py-1 pl-4">
+            <span className="font-semibold text-2xl">${place.price} </span>{' '}
             night
           </h1>
           <p className="pl-4 py-1 text-xs text-gray-500 text-left">
@@ -99,7 +103,7 @@ function BookingWidget({ place }) {
           </p>
           <div className="border mt-2 rounded-2xl ">
             <div className="grid grid-cols-2 p-1">
-              <label className="flex flex-col px-4">
+              <label className="flex flex-col px-4 text-sm">
                 Check-in:
                 <input
                   type="date"
@@ -108,7 +112,7 @@ function BookingWidget({ place }) {
                   onChange={(e) => setCheckin(e.target.value)}
                 />
               </label>
-              <label className="border-l flex flex-col px-4">
+              <label className="border-l flex flex-col px-4 text-sm">
                 Checkout:
                 <input
                   type="date"
@@ -118,7 +122,7 @@ function BookingWidget({ place }) {
                 />
               </label>
             </div>
-            <div className="px-4 py-1 border-t">
+            <div className="px-4 py-1 border-t text-sm">
               <label>
                 Number of Guests:
                 <input
@@ -133,7 +137,7 @@ function BookingWidget({ place }) {
             </div>
             {checkin && checkout && (
               <>
-                <div className="px-4 py-1 border-t">
+                <div className="px-4 py-1 border-t text-sm">
                   <label>
                     Name
                     <input
@@ -145,7 +149,7 @@ function BookingWidget({ place }) {
                     />
                   </label>
                 </div>
-                <div className="px-4 py-1 border-t">
+                <div className="px-4 py-1 border-t text-sm">
                   <label>
                     Contact No.
                     <input
@@ -162,7 +166,7 @@ function BookingWidget({ place }) {
           </div>
           <button
             disabled={buttonDisabled}
-            className="primary mt-2 disabled:cursor-not-allowed text-base"
+            className="primary mt-2 disabled:cursor-not-allowed text-sm"
             onClick={bookPlace}
           >
             Book now{' '}
@@ -178,8 +182,8 @@ function BookingWidget({ place }) {
       </div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2">
         <div>
-          <h2 className="mt-6 text-xl font-semibold">What this place offers</h2>
-          <div className="mt-3 text-gray-700">
+          <h2 className="mt-6 text-lg font-semibold">What this place offers</h2>
+          <div className="mt-3 text-gray-700 text-sm">
             {place.perks.length > 0 &&
               place.perks.map((perk) => {
                 return (
@@ -189,7 +193,7 @@ function BookingWidget({ place }) {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
-                          className="bi bi-wifi w-6 h-6"
+                          className="bi bi-wifi w-4 h-4"
                           viewBox="0 0 16 16"
                         >
                           <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z" />{' '}
@@ -203,7 +207,7 @@ function BookingWidget({ place }) {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
-                          className="w-6 h-6"
+                          className="w-4 h-4"
                         >
                           <g>
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -221,7 +225,7 @@ function BookingWidget({ place }) {
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="w-6 h-6"
+                          className="w-4 h-4"
                         >
                           <path
                             strokeLinecap="round"
@@ -238,7 +242,7 @@ function BookingWidget({ place }) {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 256 256"
-                          className="w-6 h-6"
+                          className="w-4 h-4"
                         >
                           <rect width="256" height="256" fill="none" />
                           <line
@@ -312,7 +316,7 @@ function BookingWidget({ place }) {
                         <svg
                           id="entrance-alt1"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="w-6 h-6"
+                          className="w-4 h-4"
                           viewBox="0 0 15 15"
                         >
                           <path d="M6.554,9.639a.5.5,0,0,0,.707.707L9.928,7.669a.25.25,0,0,0,0-.354h0L7.261,4.639a.5.5,0,0,0-.707.707L8.2,7H1.5a.5.5,0,0,0,0,1H8.2ZM12,1H5.5a.5.5,0,0,0,0,1h6a.5.5,0,0,1,.5.5v10a.5.5,0,0,1-.5.5H5.25a.5.5,0,0,0,0,1H12a1,1,0,0,0,1-1V2A1,1,0,0,0,12,1Z" />{' '}
@@ -326,8 +330,8 @@ function BookingWidget({ place }) {
           </div>
         </div>
         <div>
-          <h2 className="mt-6 text-xl font-semibold">Things to know</h2>
-          <ul className="mt-3 text-gray-700">
+          <h2 className="mt-6 text-lg font-semibold">Things to know</h2>
+          <ul className="mt-3 text-gray-700 text-sm">
             <li className="mt-2">Check-in {place.checkIn}</li>
             <li className="mt-2">Checkout {place.checkOut}</li>
             <li className="mt-2">{place.maxGuests} guests maximum</li>

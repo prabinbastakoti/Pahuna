@@ -23,7 +23,7 @@ function SinglePage() {
 
   return (
     <div className="mt-4 py-8">
-      <h1 className="text-2xl">{place.title}</h1>
+      <h1 className="text-xl mb-1">{place.title}</h1>
       <div className="flex gap-1 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ function SinglePage() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w- h-5"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -46,7 +46,7 @@ function SinglePage() {
         </svg>
 
         <a
-          className="my-2 block font-semibold underline text-base"
+          className="my-2 block font-semibold underline text-sm"
           target="_blank"
           rel="noreferrer"
           href={'https://maps.google.com/?q=' + place.address}

@@ -23,7 +23,7 @@ function SinglePage() {
 
   return (
     <div className="mt-4 py-8">
-      <h1 className="text-xl mb-1">{place.title}</h1>
+      <h1 className="text-xl sm:text-2xl mb-1">{place.title}</h1>
       <div className="flex gap-1 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ function SinglePage() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-4 h-4"
+          className="w-4 h-4 sm:w-5 sm:h-5"
         >
           <path
             strokeLinecap="round"
@@ -46,7 +46,7 @@ function SinglePage() {
         </svg>
 
         <a
-          className="my-2 block font-semibold underline text-sm"
+          className="my-2 block font-semibold underline text-sm sm:text-base"
           target="_blank"
           rel="noreferrer"
           href={'https://maps.google.com/?q=' + place.address}
@@ -79,7 +79,7 @@ function SinglePage() {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 256 256"
-            className="w-4 h-4"
+            className="w-4 h-4 sm:w-5 sm:h-5"
           >
             <rect width="256" height="256" fill="none" />
             <circle cx="60" cy="60" r="16" />
@@ -92,7 +92,7 @@ function SinglePage() {
             <circle cx="128" cy="196" r="16" />
             <circle cx="196" cy="196" r="16" />
           </svg>
-          <span className="text-xs">Show&nbsp;all&nbsp;photos</span>
+          <span className="text-xs sm:text-sm">Show&nbsp;all&nbsp;photos</span>
         </button>
       </div>
       <BookingWidget place={place} />

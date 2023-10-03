@@ -26,7 +26,7 @@ function PlaceLists() {
             key={place.id}
             className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
           >
-            <div className="w-28 h-28 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (
                 <img
                   src={'/api/uploads/' + place.photos[0]}
@@ -36,7 +36,7 @@ function PlaceLists() {
             </div>
             <div>
               <Link to={'/place/' + place.id}>
-                <h2 className="text-base hover:underline cursor-pointer text-left">
+                <h2 className="text-base sm:text-lg hover:underline cursor-pointer text-left">
                   {place.title}
                 </h2>
               </Link>

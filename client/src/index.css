@@ -8,7 +8,7 @@ input[type='email'],
 input[type='number'],
 input[type='tel'],
 textarea {
-  @apply w-full border my-1 py-2 px-3 rounded-2xl text-sm;
+  @apply w-full border my-1 py-2 px-3 rounded-2xl text-sm sm:text-base;
 }
 
 textarea {

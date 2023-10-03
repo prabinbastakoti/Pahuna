@@ -29,7 +29,7 @@ function Bookings() {
             key={booking.id}
             className="flex gap-4 bg-gray-100 py-4 px-2 rounded-2xl mt-6"
           >
-            <div className="w-28 h-28 shrink-0 overflow-hidden rounded-xl">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-xl">
               {booking.place.photos?.[0] && (
                 <img
                   src={'/api/uploads/' + booking.place.photos[0]}
@@ -39,19 +39,19 @@ function Bookings() {
             </div>
             <div>
               <Link to={'/place/' + booking.place.id}>
-                <h2 className="hover:underline cursor-pointer mb-1">
+                <h2 className="hover:underline cursor-pointer mb-1 sm:mb-2 sm:text-lg">
                   {booking.place.title}
                 </h2>
               </Link>
               <div className="flex items-center gap-1 mb-1">
-                <span className="text-xs text-gray-600 flex items-center gap-1">
+                <span className="text-xs sm:text-sm text-gray-600 flex items-center gap-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -68,7 +68,7 @@ function Bookings() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-3 h-3"
+                    className="w-3 h-3 sm:w-4 sm:h-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -77,14 +77,14 @@ function Bookings() {
                     />
                   </svg>
                 </span>
-                <span className="text-xs text-gray-600 flex items-center gap-1">
+                <span className="text-xs sm:text-sm text-gray-600 flex items-center gap-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -97,14 +97,14 @@ function Bookings() {
                 </span>
               </div>
               <div>
-                <div className="flex gap-1 items-center mb-1">
+                <div className="flex gap-1 items-center mb-1 sm:mb-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -112,7 +112,7 @@ function Bookings() {
                       d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
                     />
                   </svg>
-                  <span className="text-gray-600 text-xs">
+                  <span className="text-gray-600 text-xs sm:text-sm">
                     {differenceInCalendarDays(
                       new Date(booking.checkout),
                       new Date(booking.checkin)
@@ -121,9 +121,13 @@ function Bookings() {
                       new Date(booking.checkout),
                       new Date(booking.checkin)
                     ) <= 1 ? (
-                      <span className="text-gray-600 text-xs">night</span>
+                      <span className="text-gray-600 text-xs sm:text-sm">
+                        night
+                      </span>
                     ) : (
-                      <span className="text-gray-600 text-xs">nights</span>
+                      <span className="text-gray-600 text-xs sm:text-sm">
+                        nights
+                      </span>
                     )}
                   </span>
                 </div>
@@ -134,7 +138,7 @@ function Bookings() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-5 h-5"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -142,7 +146,7 @@ function Bookings() {
                       d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
                     />
                   </svg>
-                  <span className="font-bold text-sm">
+                  <span className="font-bold text-sm sm:text-base">
                     Total price: ${booking.price}
                   </span>
                 </div>

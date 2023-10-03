@@ -50,8 +50,10 @@ const Header = ({ type }) => {
     <div>
       <header className="flex items-center justify-between">
         <Link to={'/'} className="flex items-center gap-1">
-          <img src={Logo} className="w-8 h-8" />
-          <span className="font-bold text-xl text-primary">airbnb</span>
+          <img src={Logo} className="w-8 h-8 sm:w-9 sm:h-9" />
+          <span className="font-bold text-xl sm:text-2xl text-primary">
+            airbnb
+          </span>
         </Link>
         <div className={menuClassName}>
           <div>Anywhere</div>
@@ -88,7 +90,7 @@ const Header = ({ type }) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5  sm:w-6 sm:h-6 cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -109,7 +111,7 @@ const Header = ({ type }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-5 h-5"
+              className="w-5 h-5 sm:w-6 sm:h-6"
             >
               <path
                 strokeLinecap="round"
@@ -122,7 +124,7 @@ const Header = ({ type }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-5 h-5 relative top-1"
+                className="w-5 h-5 sm:w-6 sm:h-6 relative top-1"
               >
                 <path
                   fillRule="evenodd"
@@ -134,7 +136,7 @@ const Header = ({ type }) => {
             {openMenu && (
               <div
                 ref={menu}
-                className="absolute top-9 w-52 border border-gray-300 mt-4 shadow-md shadow-gray-150  right-5 rounded-xl bg-white"
+                className="z-50 absolute top-9 w-52 border border-gray-300 mt-4 shadow-md shadow-gray-150  right-5 rounded-xl bg-white"
               >
                 {user && (
                   <Link to={'/profile'}>

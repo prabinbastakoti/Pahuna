@@ -73,7 +73,7 @@ function PhotosUploader({ inputFields, setInputFields, handleFormChange }) {
             return (
               <div
                 key={item}
-                className="h-28 rounded-2xl flex relative overflow-hidden"
+                className="h-28 sm:h-32 rounded-2xl flex relative overflow-hidden"
               >
                 <img
                   className="rounded-2xl w-full object-cover md:hover:scale-125 transition duration-500 cursor-pointer"
@@ -136,7 +136,7 @@ function PhotosUploader({ inputFields, setInputFields, handleFormChange }) {
               </div>
             );
           })}
-        <label className="h-28 flex flex-col items-center justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600 cursor-pointer">
+        <label className="h-28 sm:h-32 flex flex-col items-center justify-center gap-1 border  bg-transparent rounded-2xl p-8 text-2xl text-gray-600 cursor-pointer">
           <input
             type="file"
             multiple

@@ -3,6 +3,8 @@ import placeService from '../services/placeService';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/spinner/Spinner';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function PlaceLists() {
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ function PlaceLists() {
             <div className="w-28 h-28 sm:w-32 sm:h-32 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (
                 <img
-                  src={'/api/uploads/' + place.photos[0]}
+                  src={BASE_URL + '/api/uploads/' + place.photos[0]}
                   className="w-full h-full object-cover rounded-xl md:hover:scale-125 transition duration-500 cursor-pointer"
                 />
               )}

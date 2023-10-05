@@ -24,7 +24,12 @@ mongoose
     logger.error('MongoDB Disconnected');
   });
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3000', 'https://airbnb-clone-zffr.onrender.com'],
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use('/api/uploads', express.static(__dirname + '/uploads'));

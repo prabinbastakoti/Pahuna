@@ -57,20 +57,20 @@ function SinglePage() {
       <div className="relative mt-4 grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
         {place.photos?.[0] && (
           <img
-            className="aspect-square object-cover"
+            className="aspect-square w-full h-full object-cover"
             src={'/api/uploads/' + place.photos[0]}
           />
         )}
         <div className="grid overflow-hidden">
           {place.photos?.[1] && (
             <img
-              className="aspect-square object-cover"
+              className="aspect-square w-full h-full object-cover"
               src={'/api/uploads/' + place.photos[1]}
             />
           )}
           {place.photos?.[2] && (
             <img
-              className="aspect-square object-cover relative top-2"
+              className="aspect-square w-full h-full object-cover relative top-2"
               src={'/api/uploads/' + place.photos[2]}
             />
           )}

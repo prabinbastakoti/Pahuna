@@ -27,10 +27,10 @@ const HomePage = () => {
           places.map((place) => {
             return (
               <Link key={place.id} to={'/place/' + place.id}>
-                <div className="bg-gray-500 rounded-2xl mb-2">
+                <div className="bg-gray-500 rounded-2xl mb-2 ">
                   {place.photos?.[0] && (
                     <img
-                      className="rounded-2xl aspect-square object-cover"
+                      className="rounded-2xl  aspect-square  w-full h-full object-cover"
                       src={'/api/uploads/' + place.photos[0]}
                     />
                   )}

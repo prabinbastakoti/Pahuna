@@ -7,6 +7,7 @@ import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
 import SinglePage from './pages/SinglePage';
 import { AuthContextProvider } from './context/AuthContext.jsx';
+import AllPhotos from './components/AllPhotos';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             element={<ProfilePage />}
           />
           <Route path="/place/:id" element={<SinglePage />} />
+          <Route path="/place/:id/allphotos" element={<AllPhotos />} />
         </Route>
       </Routes>
     </AuthContextProvider>

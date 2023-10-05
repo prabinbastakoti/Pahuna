@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import placeService from '../services/placeService';
 import Spinner from '../components/spinner/Spinner';
 import BookingWidget from '../components/BookingWidget';
@@ -75,7 +75,10 @@ function SinglePage() {
             />
           )}
         </div>
-        <button className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-3 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm">
+        <Link
+          className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-3 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm"
+          to={`/place/${id}/allphotos`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 256 256"
@@ -93,7 +96,7 @@ function SinglePage() {
             <circle cx="196" cy="196" r="16" />
           </svg>
           <span className="text-xs sm:text-sm">Show&nbsp;all&nbsp;photos</span>
-        </button>
+        </Link>
       </div>
       <BookingWidget place={place} />
     </div>

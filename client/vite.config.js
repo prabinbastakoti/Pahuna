@@ -5,9 +5,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:3001',
+    //     changeOrigin: true,
+    //   },
+    // },
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://airbnb-api-9urn.onrender.com',
         changeOrigin: true,
       },
     },

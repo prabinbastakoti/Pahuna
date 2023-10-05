@@ -1,5 +1,7 @@
 import uploadService from '../services/uploadService';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function PhotosUploader({ inputFields, setInputFields, handleFormChange }) {
   async function addPhotoByLink(ev) {
     ev.preventDefault();
@@ -77,7 +79,7 @@ function PhotosUploader({ inputFields, setInputFields, handleFormChange }) {
               >
                 <img
                   className="rounded-2xl w-full object-cover md:hover:scale-125 transition duration-500 cursor-pointer"
-                  src={'/api/uploads/' + item}
+                  src={BASE_URL + '/api/uploads/' + item}
                 />
                 <button
                   onClick={(ev) => removePhoto(ev, item)}

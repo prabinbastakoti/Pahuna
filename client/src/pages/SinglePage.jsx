@@ -4,6 +4,8 @@ import placeService from '../services/placeService';
 import Spinner from '../components/spinner/Spinner';
 import BookingWidget from '../components/BookingWidget';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function SinglePage() {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -58,20 +60,20 @@ function SinglePage() {
         {place.photos?.[0] && (
           <img
             className="aspect-square w-full h-full object-cover"
-            src={'/api/uploads/' + place.photos[0]}
+            src={BASE_URL + '/api/uploads/' + place.photos[0]}
           />
         )}
         <div className="grid overflow-hidden">
           {place.photos?.[1] && (
             <img
               className="aspect-square w-full h-full object-cover"
-              src={'/api/uploads/' + place.photos[1]}
+              src={BASE_URL + '/api/uploads/' + place.photos[1]}
             />
           )}
           {place.photos?.[2] && (
             <img
               className="aspect-square w-full h-full object-cover relative top-2"
-              src={'/api/uploads/' + place.photos[2]}
+              src={BASE_URL + '/api/uploads/' + place.photos[2]}
             />
           )}
         </div>

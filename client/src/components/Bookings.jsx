@@ -4,6 +4,8 @@ import Spinner from './spinner/Spinner';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function Bookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,7 @@ function Bookings() {
             <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-xl">
               {booking.place.photos?.[0] && (
                 <img
-                  src={'/api/uploads/' + booking.place.photos[0]}
+                  src={BASE_URL + '/api/uploads/' + booking.place.photos[0]}
                   className="w-full h-full object-cover rounded-xl md:hover:scale-125 transition duration-500 cursor-pointer"
                 />
               )}

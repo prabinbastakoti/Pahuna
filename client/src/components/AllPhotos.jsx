@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import placeService from '../services/placeService';
 import Spinner from '../components/spinner/Spinner';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function AllPhotos() {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,7 +29,7 @@ function AllPhotos() {
           return (
             <div key={photo}>
               <img
-                src={'/api/uploads/' + photo}
+                src={BASE_URL + '/api/uploads/' + photo}
                 className="max-w-xl w-full rounded-lg"
               />
             </div>

@@ -4,6 +4,8 @@ import Spinner from '../components/spinner/Spinner';
 import placeService from '../services/placeService';
 import Header from '../components/Header';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const HomePage = () => {
   const [places, setPlaces] = useState([]);
   const [loading, setloading] = useState(true);
@@ -31,7 +33,7 @@ const HomePage = () => {
                   {place.photos?.[0] && (
                     <img
                       className="rounded-2xl  aspect-square  w-full h-full object-cover"
-                      src={'/api/uploads/' + place.photos[0]}
+                      src={BASE_URL + '/api/uploads/' + place.photos[0]}
                     />
                   )}
                 </div>

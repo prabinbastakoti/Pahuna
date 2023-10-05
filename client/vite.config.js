@@ -13,7 +13,7 @@ export default defineConfig({
     // },
     proxy: {
       '/api': {
-        target: 'https://airbnb-api-9urn.onrender.com',
+        target: 'https://airbnb-api-9urn.onrender.com:10000',
         changeOrigin: true,
       },
     },

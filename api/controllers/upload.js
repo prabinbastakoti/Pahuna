@@ -11,7 +11,7 @@ const upload = async (req, res) => {
     const ext = parts[parts.length - 1];
     const newPath = path + '.' + ext;
     fs.renameSync(path, newPath);
-    uploadedPhotos.push(newPath.replace('uploads/', ''));
+    uploadedPhotos.push(newPath.replace('uploads\\', ''));
   }
   res.json(uploadedPhotos);
 };

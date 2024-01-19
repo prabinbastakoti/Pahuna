@@ -24,7 +24,11 @@ mongoose
     logger.error('MongoDB Disconnected');
   });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://127.0.0.1:3000', 'https://pahuna-client.onrender.com/'],
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use('/api/uploads', express.static(__dirname + '/uploads'));

@@ -56,35 +56,50 @@ function SinglePage() {
           {place.address}
         </a>
       </div>
-      <div className="relative mt-4 grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
+      <div className="relative mt-4 grid gap-2 grid-cols-[2fr_1fr_1fr] rounded-2xl overflow-hidden h-96">
         {place.photos?.[0] && (
           <img
-            className="aspect-square w-full h-full object-cover"
+            className="aspect-square w-full object-cover"
             src={BASE_URL + '/api/uploads/' + place.photos[0]}
           />
         )}
-        <div className="grid overflow-hidden">
+        <div className="overflow-hidden flex flex-col gap-1">
           {place.photos?.[1] && (
             <img
-              className="aspect-square w-full h-full object-cover"
+              className="aspect-square h-1/3 object-cover"
               src={BASE_URL + '/api/uploads/' + place.photos[1]}
             />
           )}
           {place.photos?.[2] && (
             <img
-              className="aspect-square w-full h-full object-cover relative top-2"
+              className="aspect-square h-1/3 object-cover relative top-4"
               src={BASE_URL + '/api/uploads/' + place.photos[2]}
             />
           )}
         </div>
+        <div className=" overflow-hidden flex flex-col gap-1">
+          {place.photos?.[3] && (
+            <img
+              className="aspect-square h-1/3 object-cover"
+              src={BASE_URL + '/api/uploads/' + place.photos[3]}
+            />
+          )}
+          {place.photos?.[4] && (
+            <img
+              className="aspect-square h-1/3 object-cover relative top-4"
+              src={BASE_URL + '/api/uploads/' + place.photos[4]}
+            />
+          )}
+        </div>
+
         <Link
-          className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-3 rounded-2xl bg-white shadow-md shadow-gray-500 text-sm"
+          className="flex items-center gap-1 absolute bottom-2 right-2 py-2 px-3 rounded-2xl bg-white shadow-md shadow-gray-500 text-xs"
           to={`/place/${id}/allphotos`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 256 256"
-            className="w-4 h-4 sm:w-5 sm:h-5"
+            className="w-4 h-4 sm:w-4 sm:h-4"
           >
             <rect width="256" height="256" fill="none" />
             <circle cx="60" cy="60" r="16" />

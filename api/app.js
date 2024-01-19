@@ -27,11 +27,7 @@ mongoose
 app.use(
   cors({
     credentials: true,
-    origin: [
-      'http://localhost:3000',
-      'https://airbnb-clone-zffr.onrender.com',
-      'https://airbnb-booking-app-bg6q.onrender.com/',
-    ],
+    origin: ['http://localhost:3000', 'https://pahuna-client.onrender.com/'],
   })
 );
 app.use(cookieParser());

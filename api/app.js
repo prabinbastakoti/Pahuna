@@ -26,8 +26,9 @@ mongoose
 
 app.use(
   cors({
-    origin: ['http://127.0.0.1:3000', 'https://pahuna-client.onrender.com/'],
-    credentials: true,
+    origin: 'https://pahuna-client.onrender.com/',
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
   })
 );
 app.use(cookieParser());

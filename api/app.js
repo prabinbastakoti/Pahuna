@@ -1,7 +1,7 @@
 require('express-async-errors');
 const express = require('express');
 const app = express();
-const cors = require('cors');
+// const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const middleware = require('./utils/middleware');
@@ -24,7 +24,7 @@ mongoose
     logger.error('MongoDB Disconnected');
   });
 
-app.use(cors());
+// app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader(

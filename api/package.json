@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "set NODE_ENV=production & node index.js",
+    "dev": "set NODE_ENV=development & nodemon index.js",
     "build:ui": "rm -rf dist && cd ../client/ && npm run build && cp -r dist ../api/",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },

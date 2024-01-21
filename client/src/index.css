@@ -22,3 +22,8 @@ button {
 button.primary {
   @apply bg-primary p-2 w-full rounded-2xl text-white;
 }
+
+html,
+body {
+  font-family: poppins;
+}

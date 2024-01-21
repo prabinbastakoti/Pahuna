@@ -7,6 +7,9 @@ export default {
         primary: '#00ADE9',
       },
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
   },
   plugins: [],
 };

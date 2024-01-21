@@ -56,37 +56,39 @@ function SinglePage() {
           {place.address}
         </a>
       </div>
-      <div className="relative mt-4 grid gap-2 grid-cols-[2fr_1fr_1fr] rounded-2xl overflow-hidden h-96">
-        {place.photos?.[0] && (
-          <img
-            className="aspect-square w-full object-cover"
-            src={BASE_URL + '/api/uploads/' + place.photos[0]}
-          />
-        )}
-        <div className="overflow-hidden flex flex-col gap-1">
+      <div className="relative mt-4 grid gap-1 sm:grid-cols-[2fr_1fr_1fr] rounded-2xl max-h-80">
+        <div className="max-h-80">
+          {place.photos?.[0] && (
+            <img
+              className="h-full w-full object-cover"
+              src={BASE_URL + '/api/uploads/' + place.photos[0]}
+            />
+          )}
+        </div>
+        <div className="max-h-80 hidden sm:flex flex-col gap-1 overflow-hidden">
           {place.photos?.[1] && (
             <img
-              className="aspect-square h-1/3 object-cover"
+              className="object-cover h-1/2"
               src={BASE_URL + '/api/uploads/' + place.photos[1]}
             />
           )}
           {place.photos?.[2] && (
             <img
-              className="aspect-square h-1/3 object-cover relative top-4"
+              className="object-cover h-1/2"
               src={BASE_URL + '/api/uploads/' + place.photos[2]}
             />
           )}
         </div>
-        <div className=" overflow-hidden flex flex-col gap-1">
+        <div className="max-h-80 hidden md:flex flex-col gap-1 overflow-hidden">
           {place.photos?.[3] && (
             <img
-              className="aspect-square h-1/3 object-cover"
+              className="h-1/2 object-cover"
               src={BASE_URL + '/api/uploads/' + place.photos[3]}
             />
           )}
           {place.photos?.[4] && (
             <img
-              className="aspect-square h-1/3 object-cover relative top-4"
+              className="h-1/2 object-cover"
               src={BASE_URL + '/api/uploads/' + place.photos[4]}
             />
           )}

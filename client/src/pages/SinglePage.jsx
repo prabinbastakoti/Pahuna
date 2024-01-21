@@ -56,7 +56,7 @@ function SinglePage() {
           {place.address}
         </a>
       </div>
-      <div className="relative mt-4 grid gap-1 sm:grid-cols-[2fr_1fr_1fr] rounded-2xl max-h-80">
+      <div className="relative mt-4 grid gap-1 sm:grid-cols-[2fr_1fr_1fr] rounded-2xl max-h-80 overflow-hidden">
         <div className="max-h-80">
           {place.photos?.[0] && (
             <img

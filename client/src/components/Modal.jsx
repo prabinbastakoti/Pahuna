@@ -17,18 +17,18 @@ const Modal = ({ modalTitle, modalData, setModal }) => {
               width="100"
               height="100"
               viewBox="0 0 48 48"
-              className="hover:cursor-pointer brightness-90 hover:brightness-100 w-7 h-7 absolute top-0 left-0"
+              className="hover:cursor-pointer w-7 h-7 absolute top-0 left-0"
               onClick={() => {
                 setModal(false);
               }}
             >
               <path
-                fill="#F44336"
+                fill="#5A5A5A"
                 d="M21.5 4.5H26.501V43.5H21.5z"
                 transform="rotate(45.001 24 24)"
               ></path>
               <path
-                fill="#F44336"
+                fill="#5A5A5A"
                 d="M21.5 4.5H26.5V43.501H21.5z"
                 transform="rotate(135.008 24 24)"
               ></path>

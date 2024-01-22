@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 import bookService from '../services/bookService';
+import Modal from './Modal';
 
 function BookingWidget({ place }) {
   const [checkin, setCheckin] = useState('');
@@ -10,6 +11,9 @@ function BookingWidget({ place }) {
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [modal, setModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalData, setModalData] = useState('');
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -45,8 +49,21 @@ function BookingWidget({ place }) {
     navigate('/profile/bookings');
   };
 
+  const modalFunction = (title, data) => {
+    setModal(!modal);
+    setModalTitle(title);
+    setModalData(data);
+  };
+
   return (
     <div>
+      {modal && (
+        <Modal
+          modalTitle={modalTitle}
+          modalData={modalData}
+          setModal={setModal}
+        />
+      )}
       <div className="grid gap-8 grid-cols-1 md:grid-cols-[3fr_2fr]">
         <div>
           <h2 className="mt-6 text-lg sm:text-xl font-semibold">
@@ -55,7 +72,12 @@ function BookingWidget({ place }) {
           <p className="mt-1 line-clamp-4 text-gray-700 text-sm sm:text-base">
             {place.description}
           </p>
-          <Link className="mt-1 flex items-center">
+          <button
+            className="mt-1 flex items-center bg-transparent"
+            onClick={() => {
+              modalFunction('About This Place', place.description);
+            }}
+          >
             <span className=" font-medium underline text-sm sm:text-base">
               Show more{' '}
             </span>
@@ -73,13 +95,18 @@ function BookingWidget({ place }) {
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               />
             </svg>
-          </Link>
+          </button>
 
           <h2 className="mt-8 text-lg sm:text-xl font-semibold">Extra Info</h2>
           <p className="mt-1 line-clamp-2 text-gray-700 text-sm sm:text-base">
             {place.extraInfo}
           </p>
-          <Link className="mt-1 flex items-center">
+          <button
+            className="mt-1 flex items-center bg-transparent"
+            onClick={() => {
+              modalFunction('Extra Info', place.extraInfo);
+            }}
+          >
             <span className="font-medium underline text-sm sm:text-base">
               Show more{' '}
             </span>
@@ -97,7 +124,7 @@ function BookingWidget({ place }) {
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               />
             </svg>
-          </Link>
+          </button>
         </div>
         <div className="mt-6 border px-2 py-4 rounded-2xl bg-gray-50 shadow-md">
           <h1 className="text-sm sm:text-base py-1 pl-4">

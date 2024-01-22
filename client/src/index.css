@@ -12,7 +12,7 @@ textarea {
 }
 
 textarea {
-  height: 100px;
+  @apply h-[100px];
 }
 
 button {

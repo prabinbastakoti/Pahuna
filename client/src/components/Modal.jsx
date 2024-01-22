@@ -17,7 +17,7 @@ const Modal = ({ modalTitle, modalData, setModal }) => {
               width="100"
               height="100"
               viewBox="0 0 48 48"
-              className="hover:cursor-pointer brightness-75 hover:brightness-100 w-7 h-7 absolute top-0 left-0"
+              className="hover:cursor-pointer brightness-90 hover:brightness-100 w-7 h-7 absolute top-0 left-0"
               onClick={() => {
                 setModal(false);
               }}

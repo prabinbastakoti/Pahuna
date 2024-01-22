@@ -1,13 +1,14 @@
-import './spinner.css';
+import './Spinner.css';
 
-function Spinner() {
+export default function Spinner() {
   return (
-    <div>
-      <div className="loader-container">
-        <div className="spinner"></div>
+    <>
+      <div className="w-full h-screen flex items-center justify-center">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
-export default Spinner;

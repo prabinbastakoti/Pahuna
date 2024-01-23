@@ -4,7 +4,7 @@ const Modal = ({ modalTitle, modalData, setModal }) => {
   return (
     <div>
       <div className="fixed bottom-0 right-0 min-h-screen w-screen bg-black bg-opacity-50 overflow-y-auto">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white max-w-3xl max-h-full overflow-y-auto md:w-3/4 pt-8 px-8 pb-4 rounded-2xl">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white max-w-3xl max-h-full overflow-y-auto w-4/5 md:w-3/4 pt-8 px-8 pb-4 rounded-2xl">
           <div className="relative mb-4 border-b-2 border-gray-300 pb-4">
             <div className="w-full text-center text-xl font-bold">
               {modalTitle}

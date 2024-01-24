@@ -4,7 +4,7 @@ import Logo from '../assets/logo.svg';
 import { AuthContext } from '../context/AuthContext';
 import authService from '../services/authService';
 
-const Header = ({ type }) => {
+const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const { pathname } = useLocation();
   const menu = useRef(null);
@@ -42,9 +42,9 @@ const Header = ({ type }) => {
   let menuClassName =
     'hidden md:flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-150';
 
-  // if (type === 'home') {
-  //   menuClassName += ' lg:ml-28';
-  // }
+  if (pathname !== '/') {
+    menuClassName = 'hidden';
+  }
 
   return (
     <div>

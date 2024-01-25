@@ -199,20 +199,26 @@ function BookingWidget({ place }) {
               </>
             )}
           </div>
-          <button
-            disabled={buttonDisabled}
-            className="primary mt-2 disabled:cursor-not-allowed text-sm sm:text-base"
-            onClick={bookPlace}
-          >
-            Book now{' '}
-            {checkin && checkout && (
-              <span>
-                for ${numberOfNights * place.price} ({numberOfNights}{' '}
-                {numberOfNights <= 1 ? <span>night</span> : <span>nights</span>}
-                )
-              </span>
-            )}
-          </button>
+          <div className="flex justify-center">
+            <button
+              disabled={buttonDisabled}
+              className="primary mt-2 disabled:cursor-not-allowed text-sm sm:text-base"
+              onClick={bookPlace}
+            >
+              Book now{' '}
+              {checkin && checkout && (
+                <span>
+                  for ${numberOfNights * place.price} ({numberOfNights}{' '}
+                  {numberOfNights <= 1 ? (
+                    <span>night</span>
+                  ) : (
+                    <span>nights</span>
+                  )}
+                  )
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2">

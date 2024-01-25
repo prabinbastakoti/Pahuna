@@ -76,9 +76,11 @@ const LoginPage = () => {
               Password
             </label>
           </div>
-          <button disabled={loading} className="primary">
-            Login
-          </button>
+          <div className="flex justify-center">
+            <button disabled={loading} className="primary">
+              Login
+            </button>
+          </div>
           <div className="text-center py-2 text-gray-500">
             Don&apos;t have an account yet?{' '}
             <Link className="underline text-black" to={'/signup'}>

@@ -89,7 +89,9 @@ const SignupPage = () => {
               Password
             </label>
           </div>
-          <button className="primary">Signup</button>
+          <div className="flex justify-center">
+            <button className="primary">Signup</button>
+          </div>
           <div className="text-center py-2 text-gray-500">
             Already a member?{' '}
             <Link className="underline text-black" to={'/login'}>

@@ -20,7 +20,7 @@ button {
 }
 
 button.primary {
-  @apply bg-primary p-2 w-1/2 rounded-2xl text-white;
+  @apply bg-primary p-2 rounded-2xl text-white;
 }
 
 html,

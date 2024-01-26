@@ -137,10 +137,10 @@ const Header = () => {
                 )}
                 {!user && <div className="border-b border-gray-300 my-3"></div>}
                 <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 text-sm">
-                  Airbnb your home
+                  About Us
                 </div>
                 <div className="pl-6 pr-14 py-1.5 my-2.5 cursor-pointer hover:bg-gray-100 text-sm">
-                  Help center
+                  Contact Us
                 </div>
                 {user && (
                   <div

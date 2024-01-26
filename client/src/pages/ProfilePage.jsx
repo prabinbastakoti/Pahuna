@@ -107,7 +107,7 @@ const ProfilePage = () => {
             className="bg-primary text-white px-6 py-2 rounded-full mt-4 text-sm sm:text-base"
             onClick={logout}
           >
-            logout
+            Logout
           </button>
         </div>
       )}

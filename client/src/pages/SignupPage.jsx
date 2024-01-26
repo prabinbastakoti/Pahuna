@@ -90,7 +90,7 @@ const SignupPage = () => {
             </label>
           </div>
           <div className="flex justify-center">
-            <button className="primary">Signup</button>
+            <button className="primary w-1/2">Signup</button>
           </div>
           <div className="text-center py-2 text-gray-500">
             Already a member?{' '}

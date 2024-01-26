@@ -149,7 +149,7 @@ function Bookings() {
                     />
                   </svg>
                   <span className="font-bold text-sm sm:text-base">
-                    Total price: ${booking.price}
+                    Total price: रु {booking.price}
                   </span>
                 </div>
               </div>

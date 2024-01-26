@@ -77,7 +77,7 @@ const LoginPage = () => {
             </label>
           </div>
           <div className="flex justify-center">
-            <button disabled={loading} className="primary">
+            <button disabled={loading} className="primary w-1/2">
               Login
             </button>
           </div>

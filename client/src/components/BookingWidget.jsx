@@ -129,7 +129,7 @@ function BookingWidget({ place }) {
         <div className="mt-6 border px-2 py-4 rounded-2xl bg-gray-50 shadow-md">
           <h1 className="text-sm sm:text-base py-1 pl-4">
             <span className="font-semibold text-2xl sm:text-3xl">
-              ${place.price}{' '}
+              रु {place.price}{' '}
             </span>{' '}
             night
           </h1>
@@ -202,7 +202,7 @@ function BookingWidget({ place }) {
           <div className="flex justify-center">
             <button
               disabled={buttonDisabled}
-              className="primary mt-2 disabled:cursor-not-allowed text-sm sm:text-base"
+              className="primary w-full mt-2 disabled:cursor-not-allowed text-sm sm:text-base"
               onClick={bookPlace}
             >
               Book now{' '}

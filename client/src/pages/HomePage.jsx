@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Spinner from '../components/spinner/Spinner';
 import placeService from '../services/placeService';
 import Header from '../components/Header';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -17,12 +19,22 @@ const HomePage = () => {
     });
   }, []);
 
+  const query = new URLSearchParams(window.location.search);
+  const myParam = query.get('success');
+  if (myParam === 'true') {
+    toast.success('Login Successfull', {
+      position: 'top-center',
+      toastId: 'success1',
+    });
+  }
+
   if (loading || !places) {
     return <Spinner />;
   }
 
   return (
     <div className="px-5 py-5 max-w-7xl mx-auto">
+      <ToastContainer />
       <Header type={'home'} />
       <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
         {places.length > 0 &&

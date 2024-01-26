@@ -1,19 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import authService from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
 import Spinner from '../components/spinner/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { user, loading, error, dispatch, ready } = useContext(AuthContext);
+  const { user, loading, dispatch, ready } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   async function loginUser(e) {
     e.preventDefault();
+    toast.dismiss();
 
     dispatch({ type: 'LOGIN_START' });
     const credentials = { email, password };
@@ -21,8 +24,11 @@ const LoginPage = () => {
     try {
       const res = await authService.login(credentials);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res });
-      navigate('/');
+      navigate('/?success=true');
     } catch (err) {
+      toast.error('You have entered an invalid username or password', {
+        position: 'top-center',
+      });
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
     }
   }
@@ -87,7 +93,7 @@ const LoginPage = () => {
               Register now
             </Link>
           </div>
-          {error && <span>{error}</span>}
+          <ToastContainer />
         </form>
       </div>
     </div>

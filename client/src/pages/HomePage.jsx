@@ -23,7 +23,7 @@ const HomePage = () => {
   const myParam = query.get('success');
   if (myParam === 'true') {
     toast.success('Login Successfull', {
-      position: 'top-center',
+      position: 'top-right',
       toastId: 'success1',
     });
   }

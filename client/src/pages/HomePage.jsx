@@ -19,14 +19,16 @@ const HomePage = () => {
     });
   }, []);
 
-  const query = new URLSearchParams(window.location.search);
-  const myParam = query.get('success');
-  if (myParam === 'true') {
-    toast.success('Login Successfull', {
-      position: 'top-right',
-      toastId: 'success1',
-    });
-  }
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const myParam = query.get('success');
+    if (myParam === 'true') {
+      toast.success('Login Successfull', {
+        position: 'top-right',
+        toastId: 'success1',
+      });
+    }
+  });
 
   if (loading || !places) {
     return <Spinner />;

@@ -208,7 +208,7 @@ function BookingWidget({ place }) {
               Book now{' '}
               {checkin && checkout && (
                 <span>
-                  for ${numberOfNights * place.price} ({numberOfNights}{' '}
+                  for रु {numberOfNights * place.price} ({numberOfNights}{' '}
                   {numberOfNights <= 1 ? (
                     <span>night</span>
                   ) : (

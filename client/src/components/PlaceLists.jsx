@@ -21,18 +21,18 @@ function PlaceLists() {
   }
 
   return (
-    <div className="mt-8 mb-6">
+    <div className="mt-8 mb-6 flex flex-col items-center">
       {places.length > 0 &&
         places.map((place) => (
           <div
             key={place.id}
-            className="flex gap-4 bg-gray-100 p-4 rounded-2xl mt-6"
+            className="flex gap-4 bg-gray-100 px-8 py-4 rounded-2xl mt-6 w-3/4"
           >
             <div className="w-28 h-28 sm:w-32 sm:h-32 bg-gray-300 rounded-xl shrink-0 overflow-hidden">
               {place.photos.length > 0 && (
                 <img
                   src={BASE_URL + '/api/uploads/' + place.photos[0]}
-                  className="w-full h-full object-cover rounded-xl md:hover:scale-125 transition duration-500 cursor-pointer"
+                  className="w-full h-full object-cover rounded-xl transition duration-500 cursor-pointer"
                 />
               )}
             </div>

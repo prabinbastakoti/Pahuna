@@ -24,18 +24,18 @@ function Bookings() {
   if (!bookings.length) return '';
 
   return (
-    <div className="mt-8 mb-6">
+    <div className="mt-8 mb-6 flex flex-col items-center justify-center">
       {bookings.map((booking) => {
         return (
           <div
             key={booking.id}
-            className="flex gap-4 bg-gray-100 py-4 px-2 rounded-2xl mt-6"
+            className="flex gap-4 w-3/4 bg-gray-100 py-4 px-8 rounded-2xl mt-6"
           >
             <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-xl">
               {booking.place.photos?.[0] && (
                 <img
                   src={BASE_URL + '/api/uploads/' + booking.place.photos[0]}
-                  className="w-full h-full object-cover rounded-xl md:hover:scale-125 transition duration-500 cursor-pointer"
+                  className="w-full h-full object-cover rounded-xl transition duration-500 cursor-pointer"
                 />
               )}
             </div>

@@ -2,13 +2,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Spinner from '../components/spinner/Spinner';
 import { Navigate, Link, useParams, useNavigate } from 'react-router-dom';
-import authService from '../services/authService';
 import Places from '../components/Places';
 import Bookings from '../components/Bookings';
+import ProfilePageComponent from '../components/ProfilePage';
 
 const ProfilePage = () => {
-  const { user, ready, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { user, ready } = useContext(AuthContext);
 
   let { subpage } = useParams();
 
@@ -34,12 +33,6 @@ const ProfilePage = () => {
       classes += ' bg-gray-200';
     }
     return classes;
-  }
-
-  async function logout() {
-    await authService.logout();
-    dispatch({ type: 'LOGOUT' });
-    navigate('/');
   }
 
   return (
@@ -100,17 +93,7 @@ const ProfilePage = () => {
           <span className="text-sm sm:text-base">Accomodations</span>
         </Link>
       </nav>
-      {subpage === 'profile' && (
-        <div className="text-center">
-          Logged in as {user.name} ({user.email}) <br />
-          <button
-            className="bg-primary text-white px-6 py-2 rounded-full mt-4 text-sm sm:text-base"
-            onClick={logout}
-          >
-            Logout
-          </button>
-        </div>
-      )}
+      {subpage === 'profile' && <ProfilePageComponent />}
       {subpage === 'bookings' && <Bookings />}
       {subpage === 'accomodations' && <Places />}
     </div>

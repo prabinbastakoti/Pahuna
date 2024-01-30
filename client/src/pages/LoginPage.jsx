@@ -17,6 +17,17 @@ const LoginPage = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
+    const myParams = query.get('booking');
+    if (myParams === 'false') {
+      toast.error('Please login to book a place', {
+        position: 'top-center',
+        toastId: 'error1',
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
     const myParams = query.get('success');
 
     if (myParams === 'true') {

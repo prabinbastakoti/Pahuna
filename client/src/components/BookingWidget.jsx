@@ -4,6 +4,8 @@ import { differenceInCalendarDays } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 import bookService from '../services/bookService';
 import Modal from './Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BookingWidget({ place }) {
   const [checkin, setCheckin] = useState('');
@@ -36,6 +38,9 @@ function BookingWidget({ place }) {
   const buttonDisabled = checkin && checkout && name && number ? false : true;
 
   const bookPlace = async () => {
+    if (!user) {
+      navigate('/login?booking=false');
+    }
     const info = {
       checkin,
       checkout,
@@ -46,7 +51,7 @@ function BookingWidget({ place }) {
       price: numberOfNights * place.price,
     };
     await bookService.bookPlace(info);
-    navigate('/profile/bookings');
+    navigate('/profile/bookings?booking=success');
   };
 
   const modalFunction = (title, data) => {
@@ -57,6 +62,7 @@ function BookingWidget({ place }) {
 
   return (
     <div>
+      <ToastContainer />
       {modal && (
         <Modal
           modalTitle={modalTitle}

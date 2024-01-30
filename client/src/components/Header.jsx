@@ -67,7 +67,7 @@ const Header = () => {
               >
                 Search By Location
               </label>
-              <button className="bg-primary text-white rounded-full p-1 absolute top-4 right-4">
+              <button className="bg-primary text-white rounded-full p-1 absolute top-3 right-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

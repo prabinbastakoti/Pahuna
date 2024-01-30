@@ -3,6 +3,8 @@ import bookService from '../services/bookService';
 import Spinner from './spinner/Spinner';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -17,6 +19,17 @@ function Bookings() {
     });
   }, []);
 
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const myParams = query.get('booking');
+    if (myParams === 'success') {
+      toast.success('You have successfully booked a place', {
+        position: 'top-right',
+        toastId: 'success1',
+      });
+    }
+  });
+
   if (loading) {
     return <Spinner />;
   }
@@ -25,6 +38,7 @@ function Bookings() {
 
   return (
     <div className="mt-8 mb-6 flex flex-col items-center justify-center">
+      <ToastContainer />
       {bookings.map((booking) => {
         return (
           <div

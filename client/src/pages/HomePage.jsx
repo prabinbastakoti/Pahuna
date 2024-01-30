@@ -35,7 +35,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="px-5 py-5 max-w-7xl mx-auto">
+    <div className="px-5 py-5 max-w-7xl mx-auto mt-16">
       <ToastContainer />
       <Header type={'home'} />
       <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">

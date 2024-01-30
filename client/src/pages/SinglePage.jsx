@@ -24,7 +24,7 @@ function SinglePage() {
   }
 
   return (
-    <div className="mt-4 py-8">
+    <div className="py-8 mt-16">
       <h1 className="text-xl sm:text-2xl mb-1">{place.title}</h1>
       <div className="flex gap-1 items-center">
         <svg

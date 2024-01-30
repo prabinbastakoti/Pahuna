@@ -37,7 +37,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <nav className="w-full flex justify-center my-8 gap-2">
+      <nav className="w-full flex justify-center mb-8 gap-2 mt-24">
         <Link className={linkClasses('profile')} to={'/profile'}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

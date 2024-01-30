@@ -63,7 +63,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="mt-4 grow flex items-center m-auto">
+    <div className="mt-16 grow flex items-center m-auto">
       <ToastContainer />
       <div className="mb-64">
         <h1 className="text-4xl text-center mb-4">Login</h1>

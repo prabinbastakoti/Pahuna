@@ -69,7 +69,7 @@ function PlaceLists() {
                   place.perks.map((perk) => {
                     return (
                       <div
-                        className="bg-primary text-white rounded-2xl p-1 px-4 sm:text-xs md:text-sm "
+                        className="bg-primary text-white rounded-2xl p-1 px-4 text-xs "
                         key={place.id + perk}
                       >
                         {perk === 'wifi' && 'Wifi'}

@@ -35,7 +35,8 @@ function BookingWidget({ place }) {
       numberOfNights = 0;
     }
   }
-  const buttonDisabled = checkin && checkout && name && number ? false : true;
+  const buttonDisabled =
+    checkin && checkout && name && number && numberOfNights > 0 ? false : true;
 
   const bookPlace = async () => {
     if (!user) {
@@ -48,7 +49,7 @@ function BookingWidget({ place }) {
       name,
       number,
       place: place.id,
-      price: numberOfNights * place.price,
+      price: (numberOfNights * place.price).toFixed(2),
       status: 'active',
     };
     await bookService.bookPlace(info);
@@ -151,6 +152,7 @@ function BookingWidget({ place }) {
                   type="date"
                   className="text-center text-sm sm:text-base p-2 rounded-2xl mt-1"
                   value={checkin}
+                  min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setCheckin(e.target.value)}
                 />
               </label>
@@ -160,6 +162,7 @@ function BookingWidget({ place }) {
                   type="date"
                   className=" text-center text-sm sm:text-base p-2 rounded-2xl mt-1"
                   value={checkout}
+                  min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setCheckout(e.target.value)}
                 />
               </label>
@@ -215,7 +218,8 @@ function BookingWidget({ place }) {
               Book now{' '}
               {checkin && checkout && (
                 <span>
-                  for रु {numberOfNights * place.price} ({numberOfNights}{' '}
+                  for रु {(numberOfNights * place.price).toFixed(2)} (
+                  {numberOfNights}{' '}
                   {numberOfNights <= 1 ? (
                     <span>night</span>
                   ) : (

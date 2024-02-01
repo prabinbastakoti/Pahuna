@@ -49,7 +49,7 @@ function BookingWidget({ place }) {
       name,
       number,
       place: place.id,
-      price: (numberOfNights * place.price).toFixed(2),
+      price: (numberOfNights * place.price).toFixed(0),
       status: 'active',
     };
     await bookService.bookPlace(info);
@@ -137,7 +137,7 @@ function BookingWidget({ place }) {
         <div className="mt-6 border px-2 py-4 rounded-2xl bg-gray-50 shadow-md">
           <h1 className="text-sm sm:text-base py-1 pl-4">
             <span className="font-semibold text-2xl sm:text-3xl">
-              रु {place.price}{' '}
+              रु {place.price.toFixed(0)}{' '}
             </span>{' '}
             night
           </h1>
@@ -218,7 +218,7 @@ function BookingWidget({ place }) {
               Book now{' '}
               {checkin && checkout && (
                 <span>
-                  for रु {(numberOfNights * place.price).toFixed(2)} (
+                  for रु {(numberOfNights * place.price).toFixed(0)} (
                   {numberOfNights}{' '}
                   {numberOfNights <= 1 ? (
                     <span>night</span>

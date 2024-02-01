@@ -49,6 +49,7 @@ function BookingWidget({ place }) {
       number,
       place: place.id,
       price: numberOfNights * place.price,
+      status: 'active',
     };
     await bookService.bookPlace(info);
     navigate('/profile/bookings?booking=success');

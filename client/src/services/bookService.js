@@ -10,4 +10,9 @@ const getBookings = async () => {
   return response.data;
 };
 
-export default { bookPlace, getBookings };
+const updateBooking = async (id) => {
+  const response = await axios.put('/api/bookplace/' + id);
+  return response.data;
+};
+
+export default { bookPlace, getBookings, updateBooking };

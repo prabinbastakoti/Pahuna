@@ -11,6 +11,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 function Bookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [bookingStatus, setBookingStatus] = useState('active');
 
   useEffect(() => {
     bookService.getBookings().then((data) => {
@@ -18,6 +19,17 @@ function Bookings() {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (bookingStatus === 'cancelled') {
+      setLoading(true);
+      bookService.getBookings().then((data) => {
+        setBookings(data.reverse());
+        setLoading(false);
+        setBookingStatus('active');
+      });
+    }
+  }, [bookingStatus]);
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -29,6 +41,15 @@ function Bookings() {
       });
     }
   });
+
+  const cancelReservation = async (bookingId) => {
+    try {
+      await bookService.updateBooking(bookingId);
+      setBookingStatus('cancelled');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (loading) {
     return <Spinner />;
@@ -168,6 +189,23 @@ function Bookings() {
                 </div>
               </div>
             </div>
+            {booking.status === 'active' && (
+              <div className="flex-1 flex items-end justify-end">
+                <button
+                  className="bg-red-500 text-white p-2 text-xs rounded-lg"
+                  onClick={() => cancelReservation(booking.id)}
+                >
+                  Cancel Reservation
+                </button>
+              </div>
+            )}
+            {booking.status === 'cancelled' && (
+              <div className="flex-1 flex items-end justify-end">
+                <button className="bg-primary text-white p-2 text-xs rounded-lg">
+                  Reservation Cancelled
+                </button>
+              </div>
+            )}
           </div>
         );
       })}

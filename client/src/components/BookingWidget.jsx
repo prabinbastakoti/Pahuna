@@ -6,6 +6,8 @@ import bookService from '../services/bookService';
 import Modal from './Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from '@emailjs/browser';
+import Spinner from './spinner/Spinner';
 
 function BookingWidget({ place }) {
   const [checkin, setCheckin] = useState('');
@@ -16,12 +18,15 @@ function BookingWidget({ place }) {
   const [modal, setModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalData, setModalData] = useState('');
+  const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) return;
     setName(user.name);
+
+    emailjs.init('Mw9UkDsQIzGw09274');
   }, []);
 
   let numberOfNights = 0;
@@ -42,6 +47,10 @@ function BookingWidget({ place }) {
     if (!user) {
       navigate('/login?booking=false');
     }
+
+    const serviceId = 'service_gf6fycl';
+    const templateId = 'template_hzeh0x1';
+
     const info = {
       checkin,
       checkout,
@@ -54,6 +63,18 @@ function BookingWidget({ place }) {
     };
     await bookService.bookPlace(info);
     navigate('/profile/bookings?booking=success');
+    try {
+      setLoading(true);
+      await emailjs.send(serviceId, templateId, {
+        name: name,
+        recipient: 'prabinbastakoti1@gmail.com',
+      });
+      alert('email successfully sent check inbox');
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const modalFunction = (title, data) => {
@@ -61,6 +82,10 @@ function BookingWidget({ place }) {
     setModalTitle(title);
     setModalData(data);
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div>

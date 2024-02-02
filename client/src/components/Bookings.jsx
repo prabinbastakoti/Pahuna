@@ -35,10 +35,13 @@ function Bookings() {
     const query = new URLSearchParams(window.location.search);
     const myParams = query.get('booking');
     if (myParams === 'success') {
-      toast.success('You have successfully booked a place', {
-        position: 'top-right',
-        toastId: 'success1',
-      });
+      toast.success(
+        'You have successfully booked a place. Please check your email for verification.',
+        {
+          position: 'top-right',
+          toastId: 'success1',
+        }
+      );
     }
   });
 

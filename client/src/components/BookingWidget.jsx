@@ -49,7 +49,8 @@ function BookingWidget({ place }) {
     }
 
     const serviceId = 'service_gf6fycl';
-    const templateId = 'template_hzeh0x1';
+    const templateIdConfirmed = 'template_hzeh0x1';
+    const templateIdReceived = 'template_u1902gb';
 
     const info = {
       checkin,
@@ -65,11 +66,28 @@ function BookingWidget({ place }) {
     navigate('/profile/bookings?booking=success');
     try {
       setLoading(true);
-      await emailjs.send(serviceId, templateId, {
-        name: name,
-        recipient: 'prabinbastakoti1@gmail.com',
+      await emailjs.send(serviceId, templateIdConfirmed, {
+        firstName: user.name.split(' ')[0],
+        name: user.name,
+        recipient: user.email,
+        placeName: place.title,
+        checkIn: checkin,
+        checkOut: checkout,
+        maxGuests: numberOfGuests,
+        price: (numberOfNights * place.price).toFixed(0),
       });
-      alert('email successfully sent check inbox');
+      await emailjs.send(serviceId, templateIdReceived, {
+        placeOwner: place.owner.name,
+        placeName: place.title,
+        name: user.name,
+        contact: number,
+        email: user.email,
+        checkIn: checkin,
+        checkOut: checkout,
+        maxGuests: numberOfGuests,
+        price: (numberOfNights * place.price).toFixed(0),
+        recipient: place.owner.email,
+      });
     } catch (error) {
       console.log(error);
     } finally {

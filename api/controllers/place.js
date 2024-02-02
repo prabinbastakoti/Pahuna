@@ -51,7 +51,7 @@ const getPlaces = async (req, res) => {
 };
 
 const getPlaceById = async (req, res) => {
-  const requestedPlace = await Place.findById(req.params.id);
+  const requestedPlace = await Place.findById(req.params.id).populate('owner');
   res.json(requestedPlace);
 };
 

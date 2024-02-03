@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import Modal from './Modal';
+import reviewService from '../services/reviewService';
+import { useNavigate } from 'react-router-dom';
 
 const Review = ({ place, setModal }) => {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [review, setReview] = useState('');
+  const navigate = useNavigate();
 
-  const postReview = () => {};
+  const postReview = async () => {
+    await reviewService.addReview({ place, rating, reviewText: review });
+    navigate('/place/' + place.id + '?addReview=success');
+  };
 
   const modalData = (
     <div className="flex flex-col gap-4">

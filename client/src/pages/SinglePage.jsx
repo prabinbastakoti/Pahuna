@@ -3,21 +3,57 @@ import { Link, useParams } from 'react-router-dom';
 import placeService from '../services/placeService';
 import Spinner from '../components/spinner/Spinner';
 import BookingWidget from '../components/BookingWidget';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import reviewService from '../services/reviewService';
+import Logo from '../assets/pp.png';
+import { getMonth, getYear } from 'date-fns';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function SinglePage() {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState(null);
   const { id } = useParams();
+
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
   useEffect(() => {
     setLoading(true);
     placeService.getPlaceById(id).then((data) => {
       setPlace(data);
-      setLoading(false);
     });
+    reviewService.getReview().then((data) => {
+      const review = data.filter((item) => item.place === id);
+      setReviews(review);
+    });
+    setLoading(false);
   }, []);
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const myParam = query.get('addReview');
+    if (myParam === 'success') {
+      toast.success('Review Successfully Added', {
+        position: 'top-right',
+        toastId: 'success122',
+      });
+    }
+  });
 
   if (loading || !place) {
     return <Spinner />;
@@ -25,6 +61,7 @@ function SinglePage() {
 
   return (
     <div className="py-8 mt-16">
+      <ToastContainer />
       <h1 className="text-xl sm:text-2xl mb-1">{place.title}</h1>
       <div className="flex gap-1 items-center">
         <svg
@@ -118,6 +155,69 @@ function SinglePage() {
         </Link>
       </div>
       <BookingWidget place={place} />
+      {reviews && (
+        <div>
+          {reviews && reviews.length <= 0 && (
+            <div className="mt-12 text-lg sm:text-xl font-semibold">
+              No reviews yet
+            </div>
+          )}
+          {reviews && reviews.length > 0 && (
+            <div>
+              <h2 className="mt-12 text-lg sm:text-xl font-semibold">
+                {reviews.length} {reviews.length == 1 && <span>review</span>}
+                {reviews.length > 1 && <span>reviews</span>}
+              </h2>
+              <div className="mt-8 grid grid-cols-2 grid-rows-3 gap-y-20 gap-x-32">
+                {reviews.map((review, index) => {
+                  if (index > 5) return;
+                  return (
+                    <div key={index}>
+                      <div className="flex items-center gap-4">
+                        <img src={Logo} className="w-14 h-14" />
+                        <div>
+                          <div className="font-semibold">
+                            {review.user.name}
+                          </div>
+                          <div className="text-sm">
+                            {monthNames[getMonth(new Date(review.createdAt))]}{' '}
+                            {getYear(new Date(review.createdAt))}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex mt-1">
+                        {[...Array(5)].map((star, index) => {
+                          const currentRating = index + 1;
+                          return (
+                            <div key={index}>
+                              <span
+                                style={{
+                                  color:
+                                    currentRating <= review.rating
+                                      ? '#ffc107'
+                                      : '#6a6767',
+                                }}
+                              >
+                                &#9733;
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <p className="line-clamp-3">{review.reviewText}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              {reviews.length > 6 && (
+                <button className="mt-14 bg-primary px-4 py-2 text-white rounded-3xl">
+                  View all {reviews.length} reviews
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

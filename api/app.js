@@ -12,6 +12,7 @@ const userRoute = require('./routes/user');
 const uploadRoute = require('./routes/upload');
 const placeRoute = require('./routes/place');
 const bookRoute = require('./routes/book');
+const reviewRoute = require('./routes/review');
 
 mongoose.set('strictQuery', false);
 
@@ -42,6 +43,7 @@ app.use('/api/user', userRoute);
 app.use('/api/upload', uploadRoute);
 app.use('/api/place', placeRoute);
 app.use('/api/bookplace', bookRoute);
+app.use('/api/review', reviewRoute);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

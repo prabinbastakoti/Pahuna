@@ -4,8 +4,6 @@ import { differenceInCalendarDays } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 import bookService from '../services/bookService';
 import Modal from './Modal';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import emailjs from '@emailjs/browser';
 import Spinner from './spinner/Spinner';
 
@@ -111,7 +109,6 @@ function BookingWidget({ place }) {
 
   return (
     <div>
-      <ToastContainer />
       {modal && (
         <Modal
           modalTitle={modalTitle}

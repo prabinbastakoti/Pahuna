@@ -75,7 +75,7 @@ function Bookings() {
         return (
           <div
             key={booking.id}
-            className="w-3/4 bg-gray-100 py-4 px-8 rounded-2xl mt-6"
+            className="w-4/5 bg-gray-100 py-4 px-6 rounded-2xl mt-6"
           >
             <div className="flex gap-4">
               <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 overflow-hidden rounded-xl">

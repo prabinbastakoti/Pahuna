@@ -29,6 +29,10 @@ textarea {
   @apply h-[100px];
 }
 
+textarea.review {
+  @apply h-[200px] border-2 border-gray-300 resize-none;
+}
+
 button {
   @apply bg-gray-300;
 }

@@ -57,41 +57,45 @@ function BookingWidget({ place }) {
       checkout,
       numberOfGuests,
       name,
-      number,
+      number: Number(number),
       place: place.id,
       price: (numberOfNights * place.price).toFixed(0),
       status: 'active',
     };
-    await bookService.bookPlace(info);
-    navigate('/profile/bookings?booking=success');
     try {
-      setLoading(true);
-      await emailjs.send(serviceId, templateIdConfirmed, {
-        firstName: user.name.split(' ')[0],
-        name: user.name,
-        recipient: user.email,
-        placeName: place.title,
-        checkIn: checkin,
-        checkOut: checkout,
-        maxGuests: numberOfGuests,
-        price: (numberOfNights * place.price).toFixed(0),
-      });
-      await emailjs.send(serviceId, templateIdReceived, {
-        placeOwner: place.owner.name,
-        placeName: place.title,
-        name: user.name,
-        contact: number,
-        email: user.email,
-        checkIn: checkin,
-        checkOut: checkout,
-        maxGuests: numberOfGuests,
-        price: (numberOfNights * place.price).toFixed(0),
-        recipient: place.owner.email,
-      });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      await bookService.bookPlace(info);
+      navigate('/profile/bookings?booking=success');
+      try {
+        setLoading(true);
+        await emailjs.send(serviceId, templateIdConfirmed, {
+          firstName: user.name.split(' ')[0],
+          name: user.name,
+          recipient: user.email,
+          placeName: place.title,
+          checkIn: checkin,
+          checkOut: checkout,
+          maxGuests: numberOfGuests,
+          price: (numberOfNights * place.price).toFixed(0),
+        });
+        await emailjs.send(serviceId, templateIdReceived, {
+          placeOwner: place.owner.name,
+          placeName: place.title,
+          name: user.name,
+          contact: Number(number),
+          email: user.email,
+          checkIn: checkin,
+          checkOut: checkout,
+          maxGuests: numberOfGuests,
+          price: (numberOfNights * place.price).toFixed(0),
+          recipient: place.owner.email,
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -241,7 +245,7 @@ function BookingWidget({ place }) {
                   <label>
                     Contact No.
                     <input
-                      type="tel"
+                      type="number"
                       value={number}
                       onChange={(e) => {
                         setNumber(e.target.value);

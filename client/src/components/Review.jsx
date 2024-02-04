@@ -53,7 +53,7 @@ const Review = ({ place, setModal }) => {
         onChange={(e) => setReview(e.target.value)}
       ></textarea>
       <button
-        className="bg-primary px-4 py-2 rounded-2xl text-white w-1/3"
+        className="bg-primary px-4 py-2 rounded-2xl text-white w-1/2 md:w-1/3 "
         onClick={postReview}
       >
         Post your review

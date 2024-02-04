@@ -93,7 +93,7 @@ function SinglePage() {
           {place.address}
         </a>
       </div>
-      <div className="relative mt-4 grid gap-1 sm:grid-cols-[2fr_1fr_1fr] rounded-2xl max-h-80 overflow-hidden">
+      <div className="relative mt-4 grid gap-1 sm:grid-cols-[2fr_1fr] md:grid-cols-[2fr_1fr_1fr] rounded-2xl max-h-80 overflow-hidden">
         <div className="max-h-80">
           {place.photos?.[0] && (
             <img
@@ -176,10 +176,10 @@ function SinglePage() {
                       <div className="flex items-center gap-4">
                         <img src={Logo} className="w-14 h-14" />
                         <div>
-                          <div className="font-semibold">
+                          <div className="text-sm md:text-base font-semibold">
                             {review.user.name}
                           </div>
-                          <div className="text-sm">
+                          <div className="text-xs md:text-sm">
                             {monthNames[getMonth(new Date(review.createdAt))]}{' '}
                             {getYear(new Date(review.createdAt))}
                           </div>
@@ -204,7 +204,9 @@ function SinglePage() {
                           );
                         })}
                       </div>
-                      <p className="line-clamp-3">{review.reviewText}</p>
+                      <p className="line-clamp-3 text-sm md:text-base">
+                        {review.reviewText}
+                      </p>
                     </div>
                   );
                 })}

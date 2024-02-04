@@ -41,16 +41,18 @@ const ProfilePageComponent = () => {
   }
 
   return (
-    <div className="px-10 py-6 flex justify-center mt-16">
-      <div>
+    <div className="px-28 py-6 flex justify-center mt-16 overflow-hidden">
+      <div className="flex flex-col justify-center items-center">
         <div className="flex gap-5 items-center mb-10">
-          <div className="w-32 h-32 rounded-full">
+          <div className="h-20 w-20 md:w-32 md:h-32 rounded-full ">
             <img src={profilePicture} className="object-cover" />
           </div>
-          <div className="flex-1 text-2xl font-semibold">{user.name}</div>
+          <div className="flex-1 text-xl md:text-2xl font-semibold">
+            {user.name}
+          </div>
         </div>
 
-        <div className="text-xl flex gap-8">
+        <div className="text-base md:text-xl flex gap-8">
           <div className="flex flex-col gap-4">
             <div>Email Address</div>
             <div>Accomodations</div>

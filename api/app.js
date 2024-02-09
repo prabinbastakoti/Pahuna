@@ -27,7 +27,7 @@ mongoose
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://pahuna-client.onrender.com/'],
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
   })

@@ -2,7 +2,7 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const cors = require('cors');
+// const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const middleware = require('./utils/middleware');
 const config = require('./utils/config');
@@ -25,13 +25,29 @@ mongoose
     logger.error('MongoDB Disconnected');
   });
 
-app.use(
-  cors({
-    origin: ['http://localhost:3000', 'https://pahuna-client.onrender.com/'],
-    credentials: true, //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ['http://localhost:3000', 'https://pahuna-client.onrender.com/'],
+//     credentials: true, //access-control-allow-credentials:true
+//     optionSuccessStatus: 200,
+//   })
+// );
+
+app.use((req, res, next) => {
+  const corsWhitelist = [
+    'http://localhost:3000',
+    'https://pahuna-client.onrender.com',
+  ];
+  if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+  }
+
+  next();
+});
 
 app.use(cookieParser());
 app.use(express.json());

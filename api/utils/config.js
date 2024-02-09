@@ -6,4 +6,6 @@ const URI = process.env.MONGODB_URI;
 
 const SECRET = process.env.SECRET;
 
-module.exports = { PORT, URI, SECRET };
+const ORIGIN = process.env.ORIGIN;
+
+module.exports = { PORT, URI, SECRET, ORIGIN };

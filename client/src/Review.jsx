@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from './Modal';
-import reviewService from '../services/reviewService';
+import reviewService from './services/reviewService';
 import { useNavigate } from 'react-router-dom';
 
 const Review = ({ place, setModal }) => {

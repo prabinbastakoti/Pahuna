@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Perks from './Perks';
 import PhotosUploader from './PhotosUploader';
-import placeService from '../services/placeService';
+import placeService from './services/placeService';
 import Spinner from './spinner/Spinner';
 
 function PlaceForm() {

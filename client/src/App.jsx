@@ -7,8 +7,8 @@ import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
 import SinglePage from './pages/SinglePage';
 import { AuthContextProvider } from './context/AuthContext.jsx';
-import AllPhotos from './components/AllPhotos';
 import axios from 'axios';
+import AllPhotos from './AllPhotos.jsx';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 axios.defaults.withCredentials = true;

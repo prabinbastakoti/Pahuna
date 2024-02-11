@@ -1,11 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import authService from '../services/authService';
+import { AuthContext } from './context/AuthContext';
+import authService from './services/authService';
 import { useNavigate } from 'react-router-dom';
-import placeService from '../services/placeService';
+import placeService from './services/placeService';
 import Spinner from './spinner/Spinner';
-import bookService from '../services/bookService';
-import profilePicture from '../assets/pp.png';
+import bookService from './services/bookService';
+import profilePicture from './assets/pp.png';
 
 const ProfilePageComponent = () => {
   const { user, ready, dispatch } = useContext(AuthContext);

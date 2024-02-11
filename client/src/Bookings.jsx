@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import bookService from '../services/bookService';
+import bookService from './services/bookService';
 import Spinner from './spinner/Spinner';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';

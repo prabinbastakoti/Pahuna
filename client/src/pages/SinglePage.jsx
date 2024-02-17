@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import placeService from '../services/placeService';
-import Spinner from '../spinner/Spinner';
-import BookingWidget from '../BookingWidget';
+import Spinner from '../components/spinner/Spinner';
+import BookingWidget from '../components/BookingWidget';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import reviewService from '../services/reviewService';

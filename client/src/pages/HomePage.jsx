@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Spinner from '../spinner/Spinner';
+import Spinner from '../components/spinner/Spinner';
 import placeService from '../services/placeService';
-import Header from '../Header';
+import Header from '../components/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

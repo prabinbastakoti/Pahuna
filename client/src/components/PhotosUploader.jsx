@@ -1,4 +1,4 @@
-import uploadService from './services/uploadService';
+import uploadService from '../services/uploadService';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import Spinner from '../spinner/Spinner';
+import Spinner from '../components/spinner/Spinner';
 import { Navigate, Link, useParams, useNavigate } from 'react-router-dom';
-import Places from '../Places';
-import Bookings from '../Bookings';
-import ProfilePageComponent from '../ProfilePage';
+import Places from '../components/Places';
+import Bookings from '../components/Bookings';
+import ProfilePageComponent from '../components/ProfilePage';
 
 const ProfilePage = () => {
   const { user, ready } = useContext(AuthContext);

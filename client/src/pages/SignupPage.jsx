@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import authService from '../services/authService';
 import { AuthContext } from '../context/AuthContext';
-import Spinner from '../spinner/Spinner';
+import Spinner from '../components/spinner/Spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Logo from './assets/logo.svg';
-import { AuthContext } from './context/AuthContext';
-import authService from './services/authService';
+import Logo from '../assets/logo.svg';
+import { AuthContext } from '../context/AuthContext';
+import authService from '../services/authService';
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import placeService from './services/placeService';
-import Spinner from './spinner/Spinner';
+import placeService from '../services/placeService';
+import Spinner from '../components/spinner/Spinner';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 

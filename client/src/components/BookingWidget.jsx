@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
-import { AuthContext } from './context/AuthContext';
-import bookService from './services/bookService';
+import { AuthContext } from '../context/AuthContext';
+import bookService from '../services/bookService';
 import Modal from './Modal';
 import emailjs from '@emailjs/browser';
 import Spinner from './spinner/Spinner';

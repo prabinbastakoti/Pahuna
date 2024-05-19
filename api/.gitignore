@@ -1,2 +1,2 @@
 node_modules
-.env
+# .env //This is commented out so that others can access the environment variables without any hassle

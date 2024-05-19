@@ -3,9 +3,6 @@
 An innovative online homestay marketplace application, designed to revolutionize the
 way individuals explore, book, and experience homestays nationwide.
 
-## Project Status
-
-This project is currently in development. Users can book, create, review and cancel homestays.
 
 ## Project Screen Shot(s)
 

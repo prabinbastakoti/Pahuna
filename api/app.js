@@ -25,7 +25,13 @@ mongoose
     logger.error('MongoDB Disconnected');
   });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: config.ORIGIN,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());

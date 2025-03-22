@@ -32,7 +32,11 @@ const login = async (req, res) => {
   const token = jwt.sign(tokenCredentials, process.env.SECRET);
 
   res
-    .cookie('access_token', token, { httpOnly: true })
+    .cookie('access_token', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    })
     .status(200)
     .json({ name: user.name, email: user.email });
 };

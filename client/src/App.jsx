@@ -17,15 +17,15 @@ function App() {
     <AuthContextProvider>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/" element={<Layout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignupPage />} />
           <Route
-            path="/profile/:subpage?/:action?/:id?"
+            path='/profile/:subpage?/:action?/:id?'
             element={<ProfilePage />}
           />
-          <Route path="/place/:id" element={<SinglePage />} />
-          <Route path="/place/:id/allphotos" element={<AllPhotos />} />
+          <Route path='/place/:id' element={<SinglePage />} />
+          <Route path='/place/:id/allphotos' element={<AllPhotos />} />
         </Route>
       </Routes>
     </AuthContextProvider>

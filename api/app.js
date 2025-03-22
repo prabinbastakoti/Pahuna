@@ -35,15 +35,15 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/api/uploads', express.static(__dirname + '/uploads'));
 app.use(express.static('dist'));
 
-app.use('/auth', authRoute);
-app.use('/user', userRoute);
-app.use('/upload', uploadRoute);
-app.use('/place', placeRoute);
-app.use('/bookplace', bookRoute);
-app.use('/review', reviewRoute);
+app.use('/api/auth', authRoute);
+app.use('/api/user', userRoute);
+app.use('/api/upload', uploadRoute);
+app.use('/api/place', placeRoute);
+app.use('/api/bookplace', bookRoute);
+app.use('/api/review', reviewRoute);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
